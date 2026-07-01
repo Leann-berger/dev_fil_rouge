@@ -1,0 +1,57 @@
+:root{
+    --color_brown: #80645A;
+    --color_dark_green: #2D5016;
+    --color_ligth_green: #7CB342;
+    --color_black: #0D0D0D;
+    --color_beige: #F5F0E8;
+
+    --font_fam_montserrat: "Montserrat", sans-serif;
+    --font_fam_patrick: "Patrick Hand";
+
+    --font_size_montserrat: 1.5em;
+    --font_size_patrick: 2.25em;
+
+    --font_weight_montserrat: 500;
+    --font_weight_patrick: 400;
+}
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--color_beige);
+}
+
+header{
+    background-color: var(--color_dark_green);
+    height: 16vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+header img{
+    width: 13vw;
+    height: 13vw;
+}
+
+header div nav label img{
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
+header div{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start; */
+}
+
+
+h1 {
+    font-family: var(--font_fam_patrick);
+    font-weight: var(--font_weight_patrick);
+    font-size: 8.00em;
+    color: var(--color_beige);
+    margin: 0;
+    padding: 0;
+}
