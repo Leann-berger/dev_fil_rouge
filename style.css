@@ -23,35 +23,102 @@ body{
     background-color: var(--color_beige);
 }
 
+
+
+/* header */
+
 header{
     background-color: var(--color_dark_green);
-    height: 16vw;
+    height: 100px;
     display: flex;
     justify-content: space-between;
 }
 
+
+
+
+/* image header */
+
 header img{
-    width: 13vw;
-    height: 13vw;
+    width: 5.5vw;
+    height: 5.5vw;
+    align-self: center;
 }
 
-header div nav label img{
-    width: 2.5vw;
-    height: 2.5vw;
+header>img:first-of-type{
+    border-radius: 30px;
+    margin-left: 15px;
 }
+
+
+header>img:nth-of-type(2){
+    border-radius: 100px;
+    border: solid 3px var(--color_beige);
+    margin-right: 15px;
+}
+
+
+
+
+/* div (search bar + title ) */
 
 header div{
     display: flex;
     flex-direction: column;
-    /* justify-content: start; */
+    align-self: flex-start;
 }
 
 
-h1 {
+
+/* search bar */
+
+header div nav{
+    align-self: center;
+    position: relative;
+}
+
+header div nav img{
+    width: 90%;
+    height: 90%;
+    
+    
+}
+
+header div nav button{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+
+
+}
+
+header div nav button:hover {
+    cursor: pointer;
+}
+
+
+header div nav input{
+    width: 60vw;
+    background-color: var(--color_beige);
+    padding: 0.4vw;
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+
+
+
+/*  header title */
+
+header div h1 {
     font-family: var(--font_fam_patrick);
     font-weight: var(--font_weight_patrick);
-    font-size: 8.00em;
+    font-size: 4em;
     color: var(--color_beige);
-    margin: 0;
-    padding: 0;
+    margin: -15px 0;
+    align-self: center;
 }
