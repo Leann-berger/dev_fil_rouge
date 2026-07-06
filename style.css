@@ -122,3 +122,28 @@ header div h1 {
     margin: -15px 0;
     align-self: center;
 }
+
+
+
+/* main section */
+
+main section {
+    display: grid;
+    grid-template: 1fr / 1fr 3fr 1fr;
+}
+
+
+main section div{
+    grid-area: 1/1;
+    background-color: var(--color_ligth_green);
+}
+
+
+main section p{
+    grid-area: 1/2;
+}
+
+
+main section h2{
+    grid-area: 1/3;
+}
