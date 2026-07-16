@@ -136,6 +136,12 @@ main section {
 main section div{
     grid-area: 1/1;
     background-color: var(--color_ligth_green);
+    /* padding for the space between section */
+    padding: 2vw 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 
@@ -146,4 +152,37 @@ main section p{
 
 main section h2{
     grid-area: 1/3;
+}
+
+
+
+/* Name of brands and rating */
+
+main section div p{
+    margin: 0;
+    color: var(--color_black);
+    background-color: var(--color_beige);
+    border: solid var(--color_dark_green);
+    border-radius: 8px;
+    padding: 0.2vw 1vw;
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+
+}
+
+
+main section div h2{
+    margin: 0;
+    color: var(--color_black);
+    background-color: var(--color_beige);
+    border: solid var(--color_dark_green);
+    border-radius: 10px;
+    font-family: var(--font_fam_patrick);
+    font-size: var(--font_size_patrick);
+    font-weight: var(--font_weight_patrick);
+    /* Ici voir si il vaut mieux padding ou w and h. */
+    /* padding: 1.5vw; */
+    /* width: 17vw;
+    height: 5vw;    */
 }
