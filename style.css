@@ -8,8 +8,8 @@
     --font_fam_montserrat: "Montserrat", sans-serif;
     --font_fam_patrick: "Patrick Hand";
 
-    --font_size_montserrat: 1.5em;
-    --font_size_patrick: 2.25em;
+    --font_size_montserrat: 1em;
+    --font_size_patrick: 1.7em;
 
     --font_weight_montserrat: 500;
     --font_weight_patrick: 400;
@@ -141,7 +141,7 @@ main section div{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 
@@ -172,8 +172,9 @@ main section div p{
 }
 
 
-main section div h2{
-    margin: 0;
+
+main section div button{
+    margin: 0.5VW 0 0 0 ;
     color: var(--color_black);
     background-color: var(--color_beige);
     border: solid var(--color_dark_green);
@@ -181,8 +182,21 @@ main section div h2{
     font-family: var(--font_fam_patrick);
     font-size: var(--font_size_patrick);
     font-weight: var(--font_weight_patrick);
-    /* Ici voir si il vaut mieux padding ou w and h. */
-    /* padding: 1.5vw; */
-    /* width: 17vw;
-    height: 5vw;    */
+    width: 10vw;
+    height: 7vw;   
 }
+
+
+/* main paragraphe */
+
+main section>p{
+    align-self: end;
+    justify-self: start;    
+    border: solid var(--color_dark_green);
+    border-radius: 10px;
+    padding: 1vw;
+    margin: 0 0 2vw 0;
+    width: 50vw;
+    height: 4vw;
+}
+
