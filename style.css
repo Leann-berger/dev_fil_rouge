@@ -13,6 +13,8 @@
 
     --font_weight_montserrat: 500;
     --font_weight_patrick: 400;
+
+    --border_dark_green: solid var(--color_dark_green) 3.5px;
 }
 
 
@@ -23,6 +25,11 @@ body{
     background-color: var(--color_beige);
 }
 
+
+/* main + aside section */
+#centerOfPage{
+    display: flex;
+}
 
 
 /* header */
@@ -133,7 +140,7 @@ main section {
 }
 
 
-main section div{
+main section>div:first-of-type{
     grid-area: 1/1;
     background-color: var(--color_ligth_green);
     /* padding for the space between section */
@@ -162,7 +169,7 @@ main section div p{
     margin: 0;
     color: var(--color_black);
     background-color: var(--color_beige);
-    border: solid var(--color_dark_green);
+    border: var(--border_dark_green);
     border-radius: 8px;
     padding: 0.2vw 1vw;
     font-family: var(--font_fam_montserrat);
@@ -177,7 +184,7 @@ main section div button{
     margin: 0.5VW 0 0 0 ;
     color: var(--color_black);
     background-color: var(--color_beige);
-    border: solid var(--color_dark_green);
+    border: var(--border_dark_green);
     border-radius: 10px;
     font-family: var(--font_fam_patrick);
     font-size: var(--font_size_patrick);
@@ -191,12 +198,29 @@ main section div button{
 
 main section>p{
     align-self: end;
-    justify-self: start;    
-    border: solid var(--color_dark_green);
+    justify-self: center;    
+    border: var(--border_dark_green);
     border-radius: 10px;
     padding: 1vw;
     margin: 0 0 2vw 0;
     width: 50vw;
     height: 4vw;
+}
+
+/* main Catégories */
+
+main section>div:nth-of-type(2){
+    align-self: end;
+    justify-self: start;    
+    background-color: var(--color_brown);
+    border: var(--border_dark_green);
+    border-radius: 10px;
+    padding: 1vw;
+    margin: 0 0 2vw 0;
+    width: 11vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
