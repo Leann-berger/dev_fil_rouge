@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/NoterSourcer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+        <img src="../img/logo_fil_rouge.png" alt="image du logo d'Ethima">
+        <div>
+            <h1>ETHIMA</h1>
+            <nav>
+                <input type="search" id="search_bar" name="search_bar" placeholder="Rechercher une marque...">
+                <button><img src="../img/search.svg" alt="icone loupe"></button>
+            </nav>
+        </div>
+        <img src="../img/photo_profil_fil_rouge.png" alt="image de votre photo de profil">
+    </header>
+
+
+    <main>
+        <form method="post">
+            <div>
+                <select name="ajoutOuExiste" id="ajoutOuExiste">
+                    <option value="ajout">Ajouter une nouvelle marque</option>
+                    <option value="exist">Noter une marque existante</option>
+                </select>
+            </div>
+
+            <label for="name">Nom de la marque:</label>
+            <div>           
+                <input type="text" id="name" name="name" placeholder="Ex: Décathlon">
+            </div>
+
+            <label for="descriptionMarque">Description de la marque: </label>
+            <div class="ajoutUniquement">
+                <textarea id="descriptionMarque" name="descriptionMarque" maxlength="120" minlength="20" placeholder="Écrivez une description simple de la marque."></textarea>
+            </div>
+
+            <label for="categories">Choisissez la catégorie que vous souhaitez noter:</label>
+            <div>
+                <select name="categories" id="categories">
+                    <option value="ecologie">Écologie</option>
+                    <option value="Transparence">Transparence de la marque</option>
+                    <option value="condition">Condition de Travail</option>
+                </select>
+            </div>
+
+            <label for="note">Quelle note voulez vous mettre à cette marque? <br> (par rapport a la catégorie selectionnée)</label>
+            <div>
+                <p>5/10</p>
+                <input type="range" id="note" name="note" min="0" max="10" value="5">
+            </div>
+
+            <label for="source">Ajouter une source pour appuyer votre avis:</label>
+            <div>
+                <input type="text" id="source" name="source" placeholder="Ex: https://masource/monarticle/">
+            </div>
+            
+            <label for="descriptionSource">Description de la source:</label>
+            <div>
+                <textarea id="descriptionSource" name="descriptionSource" maxlength="200" minlength="40" placeholder="Écrivez une description simple de la source pour donner envie au autres utlisateurs."></textarea>
+            </div>
+
+            <label for="marqueAlternative">Une marque alternative à proposer?</label>
+            <div>
+                <input type="text" id="marqueAlternative" name="marqueAlternative" placeholder="Ex: Patagonia">
+            </div>
+
+            <button type="submit">Valider</button>
+            
+        </form>
+    </main>
+    
+    <footer>
+        <section>
+            <p>Raison sociale</p>
+            <p>Siret</p>
+            <p>Numéro RCS</p>
+            <p>Numéor TVA</p>
+            <p>@copie 2026. ETHIMA.fr</p>
+        </section>
+        <section>
+            <a href="#">Mentions légales</a>
+            <a href="#">Politique de protection des données</a>
+        </section>
+        
+    </footer>
+</body>
+</html>

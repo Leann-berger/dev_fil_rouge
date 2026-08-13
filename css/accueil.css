@@ -1,0 +1,1146 @@
+:root{
+    --color_brown: #80645A;
+    --color_dark_green: #2D5016;
+    --color_ligth_green: #7CB342;
+    --color_black: #0D0D0D;
+    --color_beige: #F5F0E8;
+
+    --font_fam_montserrat: "Montserrat", sans-serif;
+    --font_fam_patrick: "Patrick Hand";
+
+    --font_size_montserrat: 1em;
+    --font_size_patrick: 1.7em;
+
+    --font_weight_montserrat: 500;
+    --font_weight_patrick: 400;
+
+    --border_dark_green: solid var(--color_dark_green) 3.5px;
+}
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--color_beige);
+}
+
+
+
+/* header */
+
+header{
+    background-color: var(--color_dark_green);
+    height: 100px;
+    border-bottom: solid var(--color_brown) 5px;
+}
+
+
+
+
+/* image header */
+
+header>img:first-of-type{
+    border-radius: 30px;
+    margin-left: 15px;
+}
+
+
+header>img:nth-of-type(2){
+    border-radius: 100px;
+    border: solid 3px var(--color_beige);
+    margin-right: 15px;
+}
+
+
+/* search bar */
+
+header div nav{
+    align-self: center;
+    position: relative;
+}
+
+header div nav img{
+    width: 90%;
+    height: 90%;  
+}
+
+header div nav button{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+
+header div nav button:hover {
+    cursor: pointer;
+}
+
+
+header div nav input{
+    width: 60vw;
+    background-color: var(--color_beige);
+    padding: 0.4vw;
+    border-radius: 5px;
+    border: none;
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+}
+
+
+
+
+
+
+/*  header title */
+
+header div h1 {
+    font-family: var(--font_fam_patrick);
+    font-weight: var(--font_weight_patrick);
+    font-size: 4em;
+    color: var(--color_beige);
+    margin: -15px 0;
+}
+
+
+
+/* main section */
+
+
+
+/* empty Section */
+
+#emptySection{
+    display: none;
+}
+
+
+
+
+/* main scrollebar */
+.scroller {
+  overflow-y: scroll;
+  height: 100vh;
+  scrollbar-color: var(--color_dark_green) var(--color_beige) ;
+} 
+
+
+
+/* padding for the space between the sections */
+
+
+main section>div:first-of-type{
+    padding: 2vw 0; 
+}
+
+
+/* green band behind the brands's name */
+
+#greenBand{
+   position: absolute; 
+   background-color: var(--color_ligth_green);
+   height: 800px;
+   z-index: -1;
+}
+
+
+
+/* Name of brands and rating */
+
+main section div p{
+    margin: 0;
+    color: var(--color_black);
+    background-color: var(--color_beige);
+    border: var(--border_dark_green);
+    border-radius: 8px;
+    padding: 0.2vw 1vw;
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    text-align: center;
+
+}
+
+
+
+main section div button{
+    margin: 0.5VW 0 0 0 ;
+    color: var(--color_black);
+    background-color: var(--color_beige);
+    border: var(--border_dark_green);
+    border-radius: 10px;
+    font-family: var(--font_fam_patrick);
+    font-size: var(--font_size_patrick);
+    font-weight: var(--font_weight_patrick);
+}
+
+
+/* main paragraphe */
+
+main section>p{
+    font-family: var(--font_fam_montserrat);   
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    border: var(--border_dark_green);
+    border-radius: 10px;
+    padding: 1vw;
+    margin: 0 0 2vw 0;
+}
+
+/* main Catégories */
+
+main section>div:nth-of-type(2){  
+    background-color: var(--color_brown);
+    border: var(--border_dark_green);
+    border-radius: 10px;
+    padding: 1vw;
+    margin: 0 0 2vw 0;
+}
+
+main section>div:nth-of-type(2) h2{
+    color: var(--color_beige);
+    font-family: var(--font_fam_patrick);
+    font-size: var(--font_size_patrick);
+    font-weight: var(--font_weight_patrick);
+}
+
+
+/* aside button part */
+
+#myButton{
+     margin: 10px 0 0 0 ;
+}
+
+#myButton>button, #myButton a button{
+    color: var(--color_black);
+    background-color: var(--color_ligth_green);
+    border: solid var(--color_dark_green);
+    font-family: var(--font_fam_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    font-size: var(--font_size_montserrat);
+}
+
+/* button filtrer */
+#myButton>button{
+    border-radius: 10px;
+    padding: 5px;
+    height: 35px;
+}
+
+
+
+/* button noter sourcer */
+
+
+#myButton a button{
+    height: 95px;
+    border-radius: 100px;
+    padding: 15px;
+    margin: 0 20px;
+}
+
+
+
+
+/* aside part */
+
+aside{
+    background-color: var(--color_ligth_green);
+    border: solid var(--color_dark_green);
+    border-radius: 10px;
+    padding: 10px;
+    margin:30px 0 0 0  ;
+}
+
+aside p{
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    margin: 0;
+    text-align: center;
+}
+
+aside h3{
+    font-family: var(--font_fam_patrick);
+    font-size: var(--font_size_patrick);
+    font-weight: var(--font_weight_patrick);
+    margin: 10px 0 30px 0;
+}
+
+
+/* footer  */
+
+footer{
+    background-color: var(--color_dark_green);
+    border-top: solid var(--color_brown) 5px;
+    padding: 0 10px;
+}
+
+footer section>p, footer section>a{
+    color: var(--color_beige);
+    font-family: var(--font_fam_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    font-size: var(--font_size_montserrat);
+}
+
+
+footer section>a{
+    padding: 15px;
+}
+@media(max-width: 500px) and (min-width:0px){
+    #centerOfPage{
+        display: grid;
+        grid-template-columns:1fr;
+        grid-template-rows: 1fr;
+
+    }
+
+    main{
+        grid-area:1/1;
+        /* border-top: solid var(--color_brown) 80px; */
+    }
+
+
+    #emptySection{
+        display: contents;
+    }
+
+
+
+
+    /* header */
+
+    header{
+        height: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+
+    /* image header */
+
+    header img{
+        width: 60px;
+        height: 60px;
+        align-self: center;
+    }
+
+    header img:first-of-type{
+        grid-area: 1/1;
+        justify-self: start;
+    }
+
+    header img:nth-of-type(2){
+        grid-area: 1/3;
+        justify-self: end;
+
+    }
+
+
+    /* div (search bar + title ) */
+
+    header div{
+        grid-area: 2/ 1/ 2 /span 3 ;
+        justify-self: center;
+    }
+
+
+    header div nav input{
+           height: 25px;
+           width: 70VW;
+           
+    }
+
+    header div h1{
+        display: none;
+    }
+
+    /* main section */
+
+    main section {
+        display: grid;
+        grid-template: auto auto / 1fr 3fr;
+    }
+
+
+
+    /* rating */
+
+    main section div>p{
+        width: 50px;
+        height: 20px;
+    }
+
+    /* brands's name and rating */
+
+
+    main section>div:first-of-type{
+        grid-area: 1/1/span 2/1;
+        padding:30px 0 ;
+        /* width: 170px; */
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+
+    /* green band behind the brand's name */
+
+    #greenBand{
+        width:180px;
+    }
+
+
+    /* brands's name */
+    main section div button{
+        width: 150px;
+        height: 100px;
+        margin: 0 15px;   
+    }
+
+
+
+    /* empty section */
+
+
+    #emptySection div{
+        padding: 0;
+        height: 120px;
+        background-color: var(--color_ligth_green);
+        width: 170px;
+    }
+
+
+    /* main paragraphe */
+
+    main section>p{
+        grid-area: 2/2;
+        align-self: start;
+        justify-self: center; 
+        width: 45vw;
+        /* height: 150px; */
+        /* margin:10px 10px 0 0; */
+    }
+
+    /* main Catégories */
+
+    main section>div:nth-of-type(2){
+        grid-area: 1/2;
+        justify-self: start; 
+        align-self: end;   
+        width: 100px;
+        height: 40px;
+        margin: 0 0 0 10vw;
+        font-size: small;
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    /* aside button part */
+    #myButton{
+        position: absolute;
+        top: 120px;
+        right: 10px;
+        display: flex;
+        /* align-self: center; */
+       
+        
+    }
+
+    #myButton>button{
+        display: flex;
+        height: 30px;
+        background-color: var(--color_beige);
+    }
+
+    #myButton a{
+        margin: 0 20px 0 95px;
+        
+    }
+
+
+
+
+    /* aside part */
+
+    aside{
+        display: none;
+    }
+
+
+    /* footer  */
+
+    footer{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    footer section:nth-of-type(2){
+        display: flex;
+        align-items: end;
+        
+    }
+}
+@media(min-width: 500px) and (max-width: 800px){
+     /*mise en page main + aside section */
+    #centerOfPage{
+        display: grid;
+        grid-template-columns:1fr;
+        grid-template-rows: 1fr;
+
+    }
+
+    main{
+        grid-area:1/1;
+        /* voir si plus margin ou padding ici. avec ou sans bande blanche en haut */
+        /* border-top: solid var(--color_brown) 80px; */
+    }
+
+
+    #emptySection{
+        display: contents;
+    }
+
+
+
+
+    /* header */
+
+    header{
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    /* image header */
+
+    header img{
+        width: 90px;
+        height: 90px;
+        align-self: center;
+    }
+
+
+    /* div (search bar + title ) */
+
+    header div{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+
+
+    header div nav input{
+           height: 40px;
+           width: 55VW;
+    }
+
+    header div h1{
+        display: none;
+    }
+
+    /* main section */
+
+    main section {
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 3fr;
+    }
+
+
+
+    /* green band behind the brand's name */
+
+    #greenBand{
+        width: 200px;
+    }
+
+
+
+
+    /* rating */
+
+    main section div>p{
+        width: 50px;
+        height: 20px;
+    }
+
+    /* brands's name */
+
+
+    main section>div:first-of-type{
+        grid-area: 1/1/span 2/1;
+        padding:45px 0 ;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+
+    main section div button{
+        width: 170px;
+        height: 100px;
+        margin: 0 15px;   
+    }
+
+
+
+    /* empty section */
+
+
+    #emptySection div{
+        width: 200px;
+    }
+
+
+    /* main paragraphe */
+
+    main section>p{
+        grid-area: 2/2;
+        align-self: start;
+        justify-self: center; 
+        width: 55vw;
+        height: 70px;
+        /* margin:10px 10px 0 0; */
+    }
+
+    /* main Catégories */
+
+    main section>div:nth-of-type(2){
+        grid-area: 1/2;
+        justify-self: start; 
+        align-self: end;   
+        width: 100px;
+        height: 40px;
+        margin: 0 0 0 10vw;
+        font-size: small;
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    /* aside button part */
+    #myButton{
+        position: absolute;
+        top: 120px;
+        right: 20px;
+        display: flex;
+        justify-content: end;
+        align-self: center;
+       
+        
+    }
+
+    #myButton>button:nth-of-type(1){
+        display: flex;
+        height: 30px;
+    }
+
+
+
+
+    /* aside part */
+
+    aside{
+        display: none;
+    }
+
+
+    /* footer  */
+
+    footer{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    footer section:nth-of-type(2){
+        display: flex;
+        align-items: end;
+        
+    }
+}
+
+@media(min-width: 800px) and (max-width: 1000px){
+
+ /*mise en page main + aside section */
+    #centerOfPage{
+        display: grid;
+        grid-template-columns:1fr;
+        grid-template-rows: auto auto;
+
+    }
+
+    main{
+        grid-area:2/1;
+        border-top: solid var(--color_brown) 5px;
+    }
+
+    #buttonAndAside{
+        grid-area: 1/1;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+
+
+    /* header */
+
+    header{
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    /* image header */
+
+    header img{
+        width: 90px;
+        height: 90px;
+        align-self: center;
+    }
+
+
+    /* div (search bar + title ) */
+
+    header div{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+    }
+
+    header div h1{
+        align-self: center;
+    }
+
+    /* main section */
+
+    main section {
+        display: grid;
+        grid-template: 1fr / 1fr 3fr 1fr;
+    }
+
+
+    main section>div:first-of-type{
+        grid-area: 1/1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    main section div button{
+        width: 150px;
+        height: 9.6vw;   
+    }
+
+
+    /* green band behind the brands's name */
+
+    #greenBand{
+        width: 20vw;
+
+    }
+
+    /* main paragraphe */
+
+    main section>p{
+        grid-area: 1/2;
+        align-self: end;
+        justify-self: center; 
+        width: 55vw;
+        height: 6.6vw;
+    }
+
+    /* main Catégories */
+
+    main section>div:nth-of-type(2){
+        align-self: end;
+        justify-self: start;    
+        width: 15vw;
+        height: 6.6vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    /* aside button part */
+    #myButton{
+        display: flex;
+        justify-content: end;
+        align-self: center;
+       
+        
+    }
+
+    #myButton>button:nth-of-type(1){
+        display: flex;
+        height: 30px;
+    }
+
+
+
+
+    /* aside part */
+
+    aside{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 20px 20px 20px;
+        height: 100px;
+    } 
+
+    aside h3{
+        margin: 5px 0 10px 0;
+    }
+
+
+    /* footer  */
+
+    footer{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    footer section:nth-of-type(2){
+        display: flex;
+        align-items: end;
+        
+    }
+}
+
+@media(min-width: 1000px){
+    
+
+    /*mise en page main + aside section */
+    #centerOfPage{
+        display: grid;
+        grid-template-columns:3fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    main{
+        grid-area:1/1/span 2/1 ;
+    }
+
+    #myButton{
+        grid-area: 1/2;
+    }
+
+    aside{
+        grid-area: 2/2;
+    }
+
+
+
+    /* header */
+
+    header{
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    /* image header */
+
+    header img{
+        width: 90px;
+        height: 90px;
+        align-self: center;
+    }
+
+
+    /* div (search bar + title ) */
+
+    header div{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+    }
+
+    header div h1{
+        align-self: center;
+    }
+
+    /* main section */
+
+    main section {
+        display: grid;
+        grid-template: 1fr / 1fr 3fr 1fr;
+    }
+
+
+    main section>div:first-of-type{
+        grid-area: 1/1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* green band behind the brands's name */
+
+    #greenBand{
+    width: 15vw;
+
+    }
+
+
+
+    main section div button{
+        width: 150px;
+        height: 8vw;   
+    }
+
+
+    /* main paragraphe */
+
+    main section>p{
+        grid-area: 1/2;
+        align-self: end;
+        justify-self: center; 
+        width: 40vw;
+        height: 5vw;
+    }
+
+    /* main Catégories */
+
+    main section>div:nth-of-type(2){
+        align-self: end;
+        justify-self: start;    
+        width: 11vw;
+        height: 5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+    
+
+    /* aside button part */
+
+    #buttonAndAside{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #myButton{
+        display: flex;
+        justify-content: end;
+        align-self: center;
+        
+    }
+
+    #myButton>button:nth-of-type(1){
+        display: flex;
+        height: 30px;
+    }
+
+
+
+
+    /* aside part */
+
+    aside{
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 17vw;
+        height: 300px;
+    }
+
+
+    /* footer  */
+
+    footer{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    footer section:nth-of-type(2){
+        display: flex;
+        align-items: end;
+        
+    }
+}
+
+@media (min-width: 1200px){
+
+
+    /*mise en page main + aside section */
+    #centerOfPage{
+        display: grid;
+        grid-template-columns:3fr 1fr;
+        grid-template-rows: 1fr ;
+    }
+
+    main{
+        grid-area:1/1/span 2/1 ;
+    }
+
+    #myButton{
+        grid-area: 1/2;
+    }
+
+    aside{
+        grid-area: 2/2;
+    }
+
+
+
+    /* header */
+
+    header{
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    /* image header */
+
+    header img{
+        width: 90px;
+        height: 90px;
+        align-self: center;
+    }
+
+
+    /* div (search bar + title ) */
+
+    header div{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+    }
+
+    header div h1{
+        align-self: center;
+    }
+
+    /* main section */
+
+    main section {
+        display: grid;
+        grid-template: 1fr / 1fr 3fr 1fr;
+    }
+
+
+    main section>div:first-of-type{
+        grid-area: 1/1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+
+    main section div button{
+        width: 150px;
+        height: 7vw;   
+    }
+
+
+    /* main paragraphe */
+
+    main section>p{
+        grid-area: 1/2;
+        align-self: end;
+        justify-self: center; 
+        width: 40vw;
+        height: 3vw;
+    }
+
+    /* green band behind the brands's name */
+
+    #greenBand{
+    width: 15vw;
+
+    }
+
+    /* aside button part */
+
+    #buttonAndAside{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    #myButton{
+        display: flex;
+        justify-content: end;
+        align-self: center;
+        
+    }
+
+    #myButton>button:nth-of-type(1){
+        display: flex;
+        height: 30px;
+    }
+
+
+
+
+    /* aside part */
+
+    aside{
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 17vw;
+        height: 250px;
+    }
+
+    /* footer  */
+
+    footer{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    footer section:nth-of-type(2){
+        display: flex;
+        align-items: end;
+        
+    }
+}
+
+
+@media (min-width: 1545px){
+    aside{
+        height: 200px;
+    }
+}
+
