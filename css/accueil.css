@@ -40,13 +40,13 @@ header{
 
 /* image header */
 
-header>img:first-of-type{
+header a img{
     border-radius: 30px;
     margin-left: 15px;
 }
 
 
-header>img:nth-of-type(2){
+header>img{
     border-radius: 100px;
     border: solid 3px var(--color_beige);
     margin-right: 15px;
@@ -329,15 +329,15 @@ footer section>a{
         align-self: center;
     }
 
-    header img:first-of-type{
+
+    header a{
         grid-area: 1/1;
         justify-self: start;
     }
 
-    header img:nth-of-type(2){
+    header>img{
         grid-area: 1/3;
         justify-self: end;
-
     }
 
 
