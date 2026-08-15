@@ -3,7 +3,7 @@
 
 // Récupération des données du formulaire
 
-const ajoutExist = document.querySelector("#ajoutOuExiste");
+const addExist = document.querySelector("#ajoutOuExiste");
 const nom = document.querySelector("#name");
 const desBrand = document.querySelector("#descriptionMarque");
 const catSource = document.querySelector("#categories");
@@ -12,9 +12,9 @@ const source = document .querySelector("#source");
 const desSource = document.querySelector("#descriptionSource");
 const brandAlt = document.querySelector("#marqueAlternative");
 const catBrand = document.querySelector("#categorieMarque");
-
+const displayNote = document.querySelector("#displayNote")
 const form = document.querySelector("form");
-
+const addOnly = document.querySelectorAll(".ajoutUniquement")
 
 // fonction pour stocker toutes les données dans le locale storage
 
@@ -53,4 +53,34 @@ form.addEventListener("submit", (event)=>{
 })
 
 
+//mise à jours en temps réelle du curseur de la note
+
+note.addEventListener("input", (event)=>{
+    event.preventDefault();
+    displayNote.innerText = `${note.value}/10`
+})
+
+
+
+// gestion affichage en fonction des choix "ajouter une marque" ou "noter une marque existante"
+
+
+addExist.addEventListener("input", (event)=>{
+    event.preventDefault()
+    if (addExist.value === "existe"){
+        addOnly.forEach((element)=>{
+            // cache l'élément
+            element.style.display = "none"
+            // enlève l'attribut "required"
+            element.removeAttribute("required")
+        })
+    } else {
+        addOnly.forEach((element)=>{
+            // affiche l'élément
+            element.style.display = "flex"
+            // remet l'attribut "required"
+            element.setAttribute("required")
+        })
+    }
+})
 
