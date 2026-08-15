@@ -14,19 +14,19 @@
 </head>
 <body>
     <header>
-        <a href="./index.html"><img src="../img/logo_fil_rouge.png" alt="image du logo d'Ethima"></a>
+        <a href="./index.html" aria-label="Actualiser la page" tabindex="1"><img src="../img/logo_fil_rouge.png" alt="image du logo d'Ethima"></a>
         <div>
             <h1>ETHIMA</h1>
             <nav>
-                <input type="search" id="search_bar" name="search_bar" placeholder="Rechercher une marque...">
-                <button><img src="../img/search.svg" alt="icone loupe"></button>
+                <input type="search" id="search_bar" name="search_bar" placeholder="Rechercher une marque..." aria-label="Barre de recherche" tabindex="1">
+                <button aria-label="Rechercher" tabindex="1"><img src="../img/search.svg" alt="icone loupe"></button>
             </nav>
         </div>
-        <img src="../img/photo_profil_fil_rouge.png" alt="image de votre photo de profil">
+        <a href="#" aria-label="Liens vers votre profile" tabindex="1"><img src="../img/photo_profil_fil_rouge.png" alt="image de votre photo de profil"></a>
     </header>
     
     <div id="centerOfPage">
-        <main class="scroller">
+        <main class="scroller" tabindex="-1" >
             <div id="greenBand">
                 
             </div>
@@ -37,7 +37,7 @@
             <section>
                 <div>
                     <p>7/30</p> 
-                    <button>NIKE</button>
+                    <button aria-label="Information sur la marque Nike">NIKE</button>
                 </div>
                 
                 <p> entreprise américaine spécialisée dans les chaussures et vêtements de sport</p> 
@@ -49,7 +49,7 @@
             <section>
                 <div>
                     <p>26/30</p> 
-                    <button>GILBERT</button>
+                    <button aria-label="Information sur la marque Gilbert">GILBERT</button>
                 </div>
                 
                 <p>Chaîne de magasin spécialiste de l'occasion livres, musique et vidéo</p> 
@@ -61,7 +61,7 @@
             <section>
                 <div>
                     <p>10/30</p> 
-                    <button>CARREFOUR</button>
+                    <button aria-label="Information sur la marque Carrefour">CARREFOUR</button>
                 </div>
                 
                 <p>Chaîne de magasins de grande distribution</p> 
@@ -73,7 +73,7 @@
             <section>
                 <div>
                     <p>X/30</p> 
-                    <button>LOREM</button>
+                    <button aria-label="Information sur la marque Lorem">LOREM</button>
                 </div>
                 
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. </p> 
@@ -85,7 +85,7 @@
             <section>
                 <div>
                     <p>X/30</p> 
-                    <button>LOREM</button>
+                    <button aria-label="Information sur la marque Lorem">LOREM</button>
                 </div>
                 
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, magnam.</p> 
@@ -97,7 +97,7 @@
             <section>
                 <div>
                     <p>X/30</p> 
-                    <button>LOREM</button>
+                    <button aria-label="Information sur la marque Lorem">LOREM</button>
                 </div>
                 
                 <p>Lorem ipsum dolor sit amet.</p> 
@@ -109,7 +109,7 @@
             <section>
                 <div>
                     <p>X/30</p> 
-                    <button>LOREM</button>
+                    <button aria-label="Information sur la marque Lorem">LOREM</button>
                 </div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur assumenda autem sed?</p> 
                 <div>
@@ -123,11 +123,11 @@
         </main>
         <div id="buttonAndAside">
             <div id="myButton">
-                <button>
+                <button tabindex="1">
                     Filtrer
-                    <img src="../img/funnel.svg" alt="icone du Filtrer">
+                    <img src="../img/funnel.svg" alt="icone Filtrer">
                 </button>
-                <a href="./NoterSourcer.html"><button>Noter<br> et <br>Sourcer</button></a>
+                <a href="./NoterSourcer.html" tabindex="-1"><button tabindex="1">Noter<br> et <br>Sourcer</button></a>
             </div>
             
             <aside>

@@ -22,11 +22,15 @@ function createBrand(brand, note, desc, catBrand){
     pDes.innerText = desc;
     h2.innerText = catBrand.toUpperCase();
 
+
     // ajout des balises dans le fichier index.html
     main.appendChild(section);
     section.append(divBrand, pDes, divCat);
     divBrand.append(pNote, buttonBrand);
     divCat.appendChild(h2);
+
+    // ajout aria-label sur la marque.
+    buttonBrand.setAttribute(`aria-label="Information sur la marque ${brand}"`)
     
 }
 
