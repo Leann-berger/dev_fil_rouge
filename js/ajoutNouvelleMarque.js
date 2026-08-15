@@ -17,7 +17,7 @@ function createBrand(brand, note, desc, catBrand){
     const h2 =  document.createElement("h2");
     
     //ajout des informations dans les balises
-    pNote.innerText = `${note}/10`;
+    pNote.innerText = `${3*note}/30`;
     buttonBrand.innerText = brand.toUpperCase();
     pDes.innerText = desc;
     h2.innerText = catBrand.toUpperCase();
@@ -31,6 +31,10 @@ function createBrand(brand, note, desc, catBrand){
 
     // ajout aria-label sur la marque.
     buttonBrand.setAttribute(`aria-label="Information sur la marque ${brand}"`)
+
+    // ajout de class pour la lisibilité du html
+    pDes.classList("description")
+    divCat.classList("categories")
     
 }
 
