@@ -132,7 +132,7 @@ header div h1 {
 /* padding for the space between the sections */
 
 
-main section>div:first-of-type{
+.nomEtNote{
     padding: 2vw 0; 
 }
 
@@ -150,7 +150,7 @@ main section>div:first-of-type{
 
 /* Name of brands and rating */
 
-main section div p{
+.noteGenerale{
     margin: 0;
     color: var(--color_black);
     background-color: var(--color_beige);
@@ -166,7 +166,7 @@ main section div p{
 
 
 
-main section div button{
+.nomMarque{
     margin: 0.5VW 0 0 0 ;
     color: var(--color_black);
     background-color: var(--color_beige);
@@ -180,7 +180,7 @@ main section div button{
 
 /* main paragraphe */
 
-main section>p{
+.description{
     font-family: var(--font_fam_montserrat);   
     font-size: var(--font_size_montserrat);
     font-weight: var(--font_weight_montserrat);
@@ -192,7 +192,7 @@ main section>p{
 
 /* main Catégories */
 
-main section>div:nth-of-type(2){  
+.categories{  
     background-color: var(--color_brown);
     border: var(--border_dark_green);
     border-radius: 10px;
@@ -200,7 +200,7 @@ main section>div:nth-of-type(2){
     margin: 0 0 2vw 0;
 }
 
-main section>div:nth-of-type(2) h2{
+.categories h2{
     color: var(--color_beige);
     font-family: var(--font_fam_patrick);
     font-size: var(--font_size_patrick);
@@ -271,6 +271,120 @@ aside h3{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+/* Main version déroulement d'une marque */
+
+
+
+
+.categorieMarque{
+    border:solid #2D5016 3px;
+    border-radius: 10px;
+    padding:5px;
+
+}
+
+.categorieMarque h2{
+    text-align: center;
+    font-family: var(--font_fam_patrick);
+    font-size: var(--font_size_patrick);
+    font-weight: var(--font_weight_patrick);
+    background-color: #7cb3429d;
+    padding: 5px;
+    border: solid var(--color_dark_green) 2px;
+    border-radius: 5px;
+}
+
+
+.categorieMarque>p{
+    text-align: center;
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    border: solid var(--color_dark_green) 2px;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.categorieMarque>a>button{
+    background-color: var(--color_brown);
+    color: var(--color_beige);
+    border: solid var(--color_dark_green) 2px;
+    border-radius: 5px;
+}
+
+
+#alternative{
+    background-color: var(--color_dark_green);
+    border:solid var(--color_brown) 3px ;
+    border-radius: 10px;
+}
+
+#alternative>p {
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    color: var(--color_beige);
+
+    
+}
+
+
+#toutesLesAlternatives a button{
+   
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    background-color: var(--color_dark_green);
+    color:var(--color_beige) ;
+    border:solid var(--color_beige) 2px;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.marqueAlternative p{
+    text-align: center;
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    background-color: var(--color_beige);
+    border:solid var(--color_ligth_green) 2px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.marqueAlternative h3{
+    text-align: center;
+    font-family: var(--font_fam_patrick);
+    font-size: var(--font_size_patrick);
+    font-weight: var(--font_weight_patrick);
+    background-color: var(--color_beige);
+    border:solid var(--color_ligth_green) 2px;
+    border-radius: 5px;
+}
+
+
+.noterSourcerCat{
+    background-color:  #7cb3429d;
+    border: solid var(--color_dark_green) 3px;
+    border-radius: 100px;
+    padding: 15px;
+}
+
+
+
+
 /* footer  */
 
 footer{
@@ -303,11 +417,18 @@ footer section>a{
         /* border-top: solid var(--color_brown) 80px; */
     }
 
+    /* empty section */
 
     #emptySection{
         display: contents;
     }
 
+    #emptyDiv{
+        padding: 0;
+        height: 120px;
+        background-color: var(--color_ligth_green);
+        width: 170px;
+    }
 
 
 
@@ -378,7 +499,7 @@ footer section>a{
     /* brands's name and rating */
 
 
-    main section>div:first-of-type{
+    .nomEtNote{
         grid-area: 1/1/span 2/1;
         padding:30px 0 ;
         /* width: 170px; */
@@ -398,7 +519,7 @@ footer section>a{
 
 
     /* brands's name */
-    main section div button{
+    .nomMarque{
         width: 150px;
         height: 100px;
         margin: 0 15px;   
@@ -406,20 +527,10 @@ footer section>a{
 
 
 
-    /* empty section */
-
-
-    #emptySection div{
-        padding: 0;
-        height: 120px;
-        background-color: var(--color_ligth_green);
-        width: 170px;
-    }
-
 
     /* main paragraphe */
 
-    main section>p{
+    .description{
         grid-area: 2/2;
         align-self: start;
         justify-self: center; 
@@ -430,7 +541,7 @@ footer section>a{
 
     /* main Catégories */
 
-    main section>div:nth-of-type(2){
+    .categories{
         grid-area: 1/2;
         justify-self: start; 
         align-self: end;   
@@ -480,6 +591,84 @@ footer section>a{
     }
 
 
+    /* main version déroulant */
+    
+    #catDeroulant{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .infoPour1Cat{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-around;
+
+    }
+
+
+    .categorieMarque{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        width: 40vw;
+    }
+
+
+
+    #alternative{
+        display: flex;
+        flex-direction: column;   
+    }
+
+    #alternative p {
+        align-self: center;
+    }
+
+
+    #toutesLesAlternatives{
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    #toutesLesAlternatives a{
+        align-self: center;
+    }
+
+
+    .marqueAlternative{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .marqueAlternative h3{
+        width: 150px;
+        height: 80px;
+    }
+
+    .noterSourcerCat{
+        margin: 0 0 20px 5px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /* footer  */
 
     footer{
@@ -510,11 +699,18 @@ footer section>a{
     }
 
 
+    /* empty section */
+
     #emptySection{
         display: contents;
     }
 
-
+    #emptyDiv{
+        padding: 0;
+        height: 120px;
+        background-color: var(--color_ligth_green);
+        width: 200px;
+    }
 
 
     /* header */
@@ -581,7 +777,7 @@ footer section>a{
     /* brands's name */
 
 
-    main section>div:first-of-type{
+    .nomEtNote{
         grid-area: 1/1/span 2/1;
         padding:45px 0 ;
         align-self: center;
@@ -592,7 +788,7 @@ footer section>a{
 
     
 
-    main section div button{
+    .nomMarque{
         width: 170px;
         height: 100px;
         margin: 0 15px;   
@@ -600,17 +796,10 @@ footer section>a{
 
 
 
-    /* empty section */
-
-
-    #emptySection div{
-        width: 200px;
-    }
-
 
     /* main paragraphe */
 
-    main section>p{
+    .description{
         grid-area: 2/2;
         align-self: start;
         justify-self: center; 
@@ -621,7 +810,7 @@ footer section>a{
 
     /* main Catégories */
 
-    main section>div:nth-of-type(2){
+    .categories{
         grid-area: 1/2;
         justify-self: start; 
         align-self: end;   
@@ -664,6 +853,82 @@ footer section>a{
     aside{
         display: none;
     }
+
+
+    /* MAIN VERSION DEROULANT */
+
+
+    #catDeroulant{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .infoPour1Cat{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+
+    .categorieMarque{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        width: 40vw;
+    }
+
+
+
+    #alternative{
+        display: flex;
+        flex-direction: column;   
+    }
+
+    #alternative p {
+        align-self: center;
+    }
+
+
+    #toutesLesAlternatives{
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    #toutesLesAlternatives a{
+        align-self: center;
+    }
+
+
+    .marqueAlternative{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .marqueAlternative h3{
+        width: 150px;
+        height: 80px;
+    }
+
+    .noterSourcerCat{
+        margin: 0 0 20px 5px;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     /* footer  */
@@ -742,7 +1007,7 @@ footer section>a{
     }
 
 
-    main section>div:first-of-type{
+    .nomEtNote{
         grid-area: 1/1;
         display: flex;
         flex-direction: column;
@@ -750,7 +1015,7 @@ footer section>a{
     }
 
 
-    main section div button{
+    .nomMarque{
         width: 150px;
         height: 9.6vw;   
     }
@@ -765,7 +1030,7 @@ footer section>a{
 
     /* main paragraphe */
 
-    main section>p{
+    .description{
         grid-area: 1/2;
         align-self: end;
         justify-self: center; 
@@ -775,7 +1040,7 @@ footer section>a{
 
     /* main Catégories */
 
-    main section>div:nth-of-type(2){
+    .categories{
         align-self: end;
         justify-self: start;    
         width: 15vw;
@@ -817,6 +1082,76 @@ footer section>a{
     aside h3{
         margin: 5px 0 10px 0;
     }
+
+
+
+    /* main version deroulant */
+
+    #catDeroulant{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .infoPour1Cat{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+
+    .categorieMarque{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        width: 40vw;
+    }
+
+
+
+    #alternative{
+        display: flex;
+        flex-direction: column;   
+    }
+
+    #alternative p {
+        align-self: center;
+    }
+
+
+    #toutesLesAlternatives{
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    #toutesLesAlternatives a{
+        align-self: center;
+    }
+
+
+    .marqueAlternative{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .marqueAlternative h3{
+        width: 150px;
+        height: 80px;
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     /* footer  */
@@ -896,7 +1231,7 @@ footer section>a{
     }
 
 
-    main section>div:first-of-type{
+    .nomEtNote{
         grid-area: 1/1;
         display: flex;
         flex-direction: column;
@@ -912,7 +1247,7 @@ footer section>a{
 
 
 
-    main section div button{
+    .nomMarque{
         width: 150px;
         height: 8vw;   
     }
@@ -920,7 +1255,7 @@ footer section>a{
 
     /* main paragraphe */
 
-    main section>p{
+    .description{
         grid-area: 1/2;
         align-self: end;
         justify-self: center; 
@@ -930,7 +1265,7 @@ footer section>a{
 
     /* main Catégories */
 
-    main section>div:nth-of-type(2){
+    .categories{
         align-self: end;
         justify-self: start;    
         width: 11vw;
@@ -976,6 +1311,77 @@ footer section>a{
         width: 17vw;
         height: 300px;
     }
+
+
+    /* main version deroulant */
+
+
+    #catDeroulant{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .infoPour1Cat{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+
+    .categorieMarque{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        width: 40vw;
+    }
+
+
+
+    #alternative{
+        display: flex;
+        flex-direction: column;   
+    }
+
+    #alternative p {
+        align-self: center;
+    }
+
+
+    #toutesLesAlternatives{
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    #toutesLesAlternatives a{
+        align-self: center;
+    }
+
+
+    .marqueAlternative{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .marqueAlternative h3{
+        width: 150px;
+        height: 80px;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     /* footer  */
@@ -1055,7 +1461,7 @@ footer section>a{
     }
 
 
-    main section>div:first-of-type{
+    .nomEtNote{
         grid-area: 1/1;
         display: flex;
         flex-direction: column;
@@ -1064,7 +1470,7 @@ footer section>a{
 
 
 
-    main section div button{
+    .nomMarque{
         width: 150px;
         height: 7vw;   
     }
@@ -1072,7 +1478,7 @@ footer section>a{
 
     /* main paragraphe */
 
-    main section>p{
+    .description{
         grid-area: 1/2;
         align-self: end;
         justify-self: center; 
@@ -1121,6 +1527,79 @@ footer section>a{
         width: 17vw;
         height: 250px;
     }
+
+
+    /* main version deroulant */
+
+
+    #catDeroulant{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .infoPour1Cat{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+
+    .categorieMarque{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        width: 40vw;
+    }
+
+
+
+    #alternative{
+        display: flex;
+        flex-direction: column;   
+    }
+
+    #alternative p {
+        align-self: center;
+    }
+
+
+    #toutesLesAlternatives{
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    #toutesLesAlternatives a{
+        align-self: center;
+    }
+
+
+    .marqueAlternative{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .marqueAlternative h3{
+        width: 150px;
+        height: 80px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* footer  */
 
