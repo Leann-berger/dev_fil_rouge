@@ -16,25 +16,63 @@ const displayNote = document.querySelector("#displayNote")
 const form = document.querySelector("form");
 const addOnly = document.querySelectorAll(".ajoutUniquement")
 
+
+
 // fonction pour stocker toutes les données dans le locale storage
 
 function stockData(){
 
     // Objet contenant toute les données
-    const newBrand = {
+    const brand = {
         nom: nom.value,
         desBrand: desBrand.value,
-        catSource: catSource.value,
         note: note.value,
-        source: source.value,
-        desSource: desSource.value,
-        brandAlt: brandAlt.value,
         catBrand: catBrand.value,
-    };
+        catsSource: {
+            catEcolo : {
+                noteSource: "",
+                source: "",
+                desSource: "",
+            },
+            catTrans: {
+                noteSource: "",
+                source: "",
+                desSource: "",
+            },
+            catCondi: {
+                noteSource: "",
+                source: "",
+                desSource: "",
+            },
+        },
+        
+        
+        brandAlts: [],
+    }
 
+    if (catSource.value === "ecologie"){
+        brand.catsSource.catEcolo.source = source.value;
+        brand.catsSource.catEcolo.desSource = desSource.value;
+    } else {
+        if  (catSource.value === "Transparence"){
+            brand.catsSource.catTrans.source = source.value;
+            brand.catsSource.catTrans.desSource = desSource.value;
+        } else {
+            brand.catsSource.catCondi.source = source.value;
+            brand.catsSource.catCondi.desSource = desSource.value;
+        }
+    }
 
+    if (brandAlt.value){
+        brand.brandAlts.push({nom :brandAlt.value})
+    }
+    
+
+    const brands = JSON.parse(localStorage.getItem("brands")) || []
+    brands.push(brand)
+    console.log(brands)
     // convertion de l'objet en chaîne de charactère pour le stocker dans le localeStorage
-    localStorage.setItem("brand", JSON.stringify(newBrand));
+    localStorage.setItem("brands", JSON.stringify(brands));
 }
 
 

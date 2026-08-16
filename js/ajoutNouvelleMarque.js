@@ -3,7 +3,7 @@
 const main = document.querySelector("main");
 
 // récupération des données dans le localeStorage
-const newBrand = JSON.parse(localStorage.getItem("brand"));
+const brands = JSON.parse(localStorage.getItem("brands"));
 
 
 // création d'une fonction pour créer la marque sur le fichier index.html
@@ -20,10 +20,10 @@ function createBrand(brand, note, desc, catBrand){
     const h2 =  document.createElement("h2");
     
     //ajout des informations dans les balises
-    pNote.innerText = `${3*note}/30`;
-    buttonBrand.innerText = brand.toUpperCase();
-    pDes.innerText = desc;
-    h2.innerText = catBrand.toUpperCase();
+    pNote.innerText = `${3*brand.note}/30`;
+    buttonBrand.innerText = brand.nom.toUpperCase();
+    pDes.innerText = brand.desBrand;
+    h2.innerText = brand.catBrand.toUpperCase();
 
 
     // ajout des balises dans le fichier index.html
@@ -33,7 +33,7 @@ function createBrand(brand, note, desc, catBrand){
     divCat.appendChild(h2);
 
     // ajout aria-label sur la marque.
-    buttonBrand.setAttribute("aria-label" ,`Information sur la marque ${brand}`)
+    buttonBrand.setAttribute("aria-label" ,`Information sur la marque ${brand.nom}`)
 
     // ajout de class pour la lisibilité du html
     pDes.className = "description";
@@ -43,7 +43,7 @@ function createBrand(brand, note, desc, catBrand){
     buttonBrand.className = "nomMarque";
 
     // creation de la version  2 de accueil
-    createCatDeroulant(section);
+    createCatDeroulant(section, brand);
     
 }
 
@@ -54,7 +54,7 @@ function createBrand(brand, note, desc, catBrand){
 
 
 
-function createCatDeroulant(currentSection){
+function createCatDeroulant(currentSection, brand){
     
     // Création div principale 
     const divMain = document.createElement("div");
@@ -62,9 +62,9 @@ function createCatDeroulant(currentSection){
     divMain.style.display = "none"
     
     // Création des trois catégories.
-    createCat("ÉCOLOGIE", "ecologie", divMain)
-    createCat("TRANSPARENCE", "Transparence", divMain);
-    createCat("CONDITION", "condition", divMain);
+    createCat("ÉCOLOGIE", divMain, brand.catsSource.catEcolo, brand)
+    createCat("TRANSPARENCE", divMain, brand.catsSource.catTrans, brand);
+    createCat("CONDITION", divMain, brand.catsSource.catCondi, brand);
     
     
     // creation section Alternative:
@@ -86,8 +86,8 @@ function createCatDeroulant(currentSection){
     pNoteAlt1.innerText = "24/30";
     
     const h3Alt1 = document.createElement("h3")
-    if (newBrand.brandAlt){
-        h3Alt1.innerText = newBrand.brandAlt;
+    if (brand.brandAlts){
+        h3Alt1.innerText = brand.brandAlts[0].nom;
     } else{
         h3Alt1.innerText = "Pas de Marque" 
     }
@@ -133,7 +133,7 @@ function createCatDeroulant(currentSection){
 
 // fonction pour créer les 3 section : ecologie, transparence, condition
 
-function createCat (nom, catNote, divMain){
+function createCat (nom, divMain, cat, brand){
     // creation Section1 :
     const section = document.createElement("section");
     section.className = "infoPour1Cat";
@@ -143,9 +143,8 @@ function createCat (nom, catNote, divMain){
     div1Section.className = "categorieMarque";
     
     const pNote = document.createElement("p");
-    
-    if (newBrand.catSource === catNote){
-        pNote.innerText = `${newBrand.note}/10`;
+    if (cat.source !== ""){
+        pNote.innerText = `${brand.note}/10`;
     }  else {
         pNote.innerText = `X/10`;
     };
@@ -185,8 +184,10 @@ function createCat (nom, catNote, divMain){
 
 
 // Si il y a des données dans localeStorage, apelle de la fonction creatBrand
-if (newBrand){
-    createBrand(newBrand.nom, newBrand.note, newBrand.desBrand, newBrand.catBrand);
+if (brands){
+    for (const brand of brands){
+        createBrand(brand);
+    }
 }
 
 

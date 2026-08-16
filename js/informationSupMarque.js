@@ -1,12 +1,12 @@
-const brands = document.querySelectorAll(".nomMarque");
+const nameBrands = document.querySelectorAll(".nomMarque");
 const sectionMain = document.querySelectorAll("main>section");
 const emptySection = document.querySelector("#emptySection")
 const pDes= document.querySelectorAll(".description");
 // const catBrand = document.querySelectorAll(".categories")
 
-const newBrand = JSON.parse(localStorage.getItem("brand"))
 
-brands.forEach((element, index)=>{
+
+nameBrands.forEach((element, index)=>{
     element.addEventListener("click", (event)=>{
         event.preventDefault();
 
@@ -54,7 +54,8 @@ brands.forEach((element, index)=>{
         nameAndRate.style.alignSelf = "start"
 
         
-        
+        const brands = JSON.parse(localStorage.getItem("brand"))
+        console.log(brands)
         
     })
 })
