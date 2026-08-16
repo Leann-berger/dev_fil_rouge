@@ -324,13 +324,13 @@ aside h3{
 }
 
 
-#alternative{
+.alternative{
     background-color: var(--color_dark_green);
     border:solid var(--color_brown) 3px ;
     border-radius: 10px;
 }
 
-#alternative>p {
+.alternative>p {
     font-family: var(--font_fam_montserrat);
     font-size: var(--font_size_montserrat);
     font-weight: var(--font_weight_montserrat);
@@ -340,7 +340,7 @@ aside h3{
 }
 
 
-#toutesLesAlternatives a button{
+.toutesLesAlternatives a button{
    
     font-family: var(--font_fam_montserrat);
     font-size: var(--font_size_montserrat);
@@ -593,7 +593,7 @@ footer section>a{
 
     /* main version déroulant */
     
-    #catDeroulant{
+    .catDeroulant{
         display: flex;
         flex-direction: column;
     }
@@ -607,7 +607,6 @@ footer section>a{
 
     }
 
-
     .categorieMarque{
         display: flex;
         flex-direction: column;
@@ -618,23 +617,23 @@ footer section>a{
 
 
 
-    #alternative{
+    .alternative{
         display: flex;
         flex-direction: column;   
     }
 
-    #alternative p {
+    .alternative p {
         align-self: center;
     }
 
 
-    #toutesLesAlternatives{
+    .toutesLesAlternatives{
         display: flex;
         justify-content: space-around;
     }
 
 
-    #toutesLesAlternatives a{
+    .toutesLesAlternatives a{
         align-self: center;
     }
 
@@ -858,7 +857,7 @@ footer section>a{
     /* MAIN VERSION DEROULANT */
 
 
-    #catDeroulant{
+    .catDeroulant{
         display: flex;
         flex-direction: column;
     }
@@ -882,23 +881,23 @@ footer section>a{
 
 
 
-    #alternative{
+    .alternative{
         display: flex;
         flex-direction: column;   
     }
 
-    #alternative p {
+    .alternative p {
         align-self: center;
     }
 
 
-    #toutesLesAlternatives{
+    .toutesLesAlternatives{
         display: flex;
         justify-content: space-around;
     }
 
 
-    #toutesLesAlternatives a{
+    .toutesLesAlternatives a{
         align-self: center;
     }
 
@@ -1087,7 +1086,7 @@ footer section>a{
 
     /* main version deroulant */
 
-    #catDeroulant{
+    .catDeroulant{
         display: flex;
         flex-direction: column;
     }
@@ -1110,23 +1109,23 @@ footer section>a{
 
 
 
-    #alternative{
+    .alternative{
         display: flex;
         flex-direction: column;   
     }
 
-    #alternative p {
+    .alternative p {
         align-self: center;
     }
 
 
-    #toutesLesAlternatives{
+    .toutesLesAlternatives{
         display: flex;
         justify-content: space-around;
     }
 
 
-    #toutesLesAlternatives a{
+    .toutesLesAlternatives a{
         align-self: center;
     }
 
@@ -1316,7 +1315,7 @@ footer section>a{
     /* main version deroulant */
 
 
-    #catDeroulant{
+    .catDeroulant{
         display: flex;
         flex-direction: column;
     }
@@ -1339,23 +1338,23 @@ footer section>a{
 
 
 
-    #alternative{
+    .alternative{
         display: flex;
         flex-direction: column;   
     }
 
-    #alternative p {
+    .alternative p {
         align-self: center;
     }
 
 
-    #toutesLesAlternatives{
+    .toutesLesAlternatives{
         display: flex;
         justify-content: space-around;
     }
 
 
-    #toutesLesAlternatives a{
+    .toutesLesAlternatives a{
         align-self: center;
     }
 
@@ -1529,10 +1528,10 @@ footer section>a{
     }
 
 
-    /* main version deroulant */
+    /* main version deroulant
 
 
-    #catDeroulant{
+    .catDeroulant{
         display: flex;
         flex-direction: column;
     }
@@ -1555,23 +1554,23 @@ footer section>a{
 
 
 
-    #alternative{
+    .alternative{
         display: flex;
         flex-direction: column;   
     }
 
-    #alternative p {
+    .alternative p {
         align-self: center;
     }
 
 
-    #toutesLesAlternatives{
+    .toutesLesAlternatives{
         display: flex;
         justify-content: space-around;
     }
 
 
-    #toutesLesAlternatives a{
+    .toutesLesAlternatives a{
         align-self: center;
     }
 
@@ -1586,7 +1585,7 @@ footer section>a{
     .marqueAlternative h3{
         width: 150px;
         height: 80px;
-    }
+    } */
 
 
 

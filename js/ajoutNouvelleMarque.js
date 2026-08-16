@@ -2,6 +2,9 @@
 
 const main = document.querySelector("main");
 
+// récupération des données dans le localeStorage
+const newBrand = JSON.parse(localStorage.getItem("brand"));
+
 
 // création d'une fonction pour créer la marque sur le fichier index.html
 
@@ -30,22 +33,162 @@ function createBrand(brand, note, desc, catBrand){
     divCat.appendChild(h2);
 
     // ajout aria-label sur la marque.
-    buttonBrand.setAttribute(`aria-label="Information sur la marque ${brand}"`)
+    buttonBrand.setAttribute("aria-label" ,`Information sur la marque ${brand}`)
 
     // ajout de class pour la lisibilité du html
-    pDes.classList("description")
-    divCat.classList("categories")
+    pDes.className = "description";
+    divCat.className = "categories";
+    divBrand.className = "nomEtNote";
+    pNote.className = "noteGenerale";
+    buttonBrand.className = "nomMarque";
+
+    // creation de la version  2 de accueil
+    createCatDeroulant(section);
     
 }
 
 
-// récupération des données dans le localeStorage
-const newBrand = JSON.parse(localStorage.getItem("brand"));
 
 
-// Si il y a des données, apelle de la fonction creatBrand
+
+
+
+
+function createCatDeroulant(currentSection){
+    
+    // Création div principale 
+    const divMain = document.createElement("div");
+    divMain.className = "catDeroulant";
+    divMain.style.display = "none"
+    
+    // Création des trois catégories.
+    createCat("ÉCOLOGIE", "ecologie", divMain)
+    createCat("TRANSPARENCE", "Transparence", divMain);
+    createCat("CONDITION", "condition", divMain);
+    
+    
+    // creation section Alternative:
+    const sectionAlt = document.createElement("section");
+    sectionAlt.className = "alternative";
+    
+    // creation contenue setion alternative
+    const pAtl = document.createElement("p");
+    pAtl.innerText = "Alternative"
+    
+    const div1SectionAlt = document.createElement("div");
+    div1SectionAlt.className = "toutesLesAlternatives";
+    
+    // marque alt 1
+    const divMarqueAlt1 = document.createElement("div")
+    divMarqueAlt1.className = "marqueAlternative";
+    
+    const pNoteAlt1 = document.createElement("p");
+    pNoteAlt1.innerText = "24/30";
+    
+    const h3Alt1 = document.createElement("h3")
+    if (newBrand.brandAlt){
+        h3Alt1.innerText = newBrand.brandAlt;
+    } else{
+        h3Alt1.innerText = "Pas de Marque" 
+    }
+    
+    // Bouton proposer une atl
+    const aAlt = document.createElement("a");
+    aAlt.setAttribute("href", "#")
+    
+    const buttonAlt = document.createElement("button");
+    buttonAlt.innerText = "Proposer une alternative";
+    
+    
+    // marque alt 2
+    const divMarqueAlt2 = document.createElement("div")
+    divMarqueAlt2.className = "marqueAlternative";
+    
+    const pNoteAlt2 = document.createElement("p");
+    pNoteAlt2.innerText = "24/30";
+    
+    const h3Alt2 = document.createElement("h3") 
+    h3Alt2.innerText = "Pas de Marque" 
+    
+
+
+    // ajout section Alt dans la div principale
+    divMain.appendChild(sectionAlt)
+    sectionAlt.append(pAtl, div1SectionAlt);
+    div1SectionAlt.append(divMarqueAlt1, aAlt, divMarqueAlt2);
+    divMarqueAlt1.append(pNoteAlt1, h3Alt1);
+    aAlt.append(buttonAlt);
+    divMarqueAlt2.append(pNoteAlt2, h3Alt2);
+
+    // ajout de la div principale dans la section concernée
+    currentSection.appendChild(divMain)
+    
+}
+
+
+
+
+
+
+
+// fonction pour créer les 3 section : ecologie, transparence, condition
+
+function createCat (nom, catNote, divMain){
+    // creation Section1 :
+    const section = document.createElement("section");
+    section.className = "infoPour1Cat";
+    
+    // creation contenue de section1
+    const div1Section = document.createElement("div");
+    div1Section.className = "categorieMarque";
+    
+    const pNote = document.createElement("p");
+    
+    if (newBrand.catSource === catNote){
+        pNote.innerText = `${newBrand.note}/10`;
+    }  else {
+        pNote.innerText = `X/10`;
+    };
+    
+    const h2 = document.createElement("h2");
+    h2.innerText = nom;
+    
+    const a = document.createElement("a");
+    a.setAttribute("href","#");
+    
+    const buttonSource = document.createElement("button");
+    buttonSource.innerText = "Plus de n source";
+    
+    const div2Section = document.createElement("div");
+    
+    const aNoterSourcer = document.createElement("a");
+    aNoterSourcer.setAttribute("href", "./NoterSourcer.html");
+    
+    const buttonNoterSourcer = document.createElement("button");
+    buttonNoterSourcer.className = "noterSourcerCat";
+    buttonNoterSourcer.innerText = "Noter\net\nSourcer";
+
+
+    divMain.appendChild(section)
+    section.append(div1Section, div2Section);
+    div1Section.append(pNote, h2, a)
+    a.appendChild(buttonSource);
+    div2Section.appendChild(aNoterSourcer)
+    aNoterSourcer.appendChild(buttonNoterSourcer);
+}
+
+
+
+
+
+
+
+
+// Si il y a des données dans localeStorage, apelle de la fonction creatBrand
 if (newBrand){
     createBrand(newBrand.nom, newBrand.note, newBrand.desBrand, newBrand.catBrand);
 }
+
+
 
 // localStorage.clear()

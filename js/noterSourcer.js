@@ -72,14 +72,14 @@ addExist.addEventListener("input", (event)=>{
             // cache l'élément
             element.style.display = "none"
             // enlève l'attribut "required"
-            element.removeAttribute("required")
+            element.required = false
         })
     } else {
         addOnly.forEach((element)=>{
             // affiche l'élément
             element.style.display = "flex"
             // remet l'attribut "required"
-            element.setAttribute("required")
+            element.required = true
         })
     }
 })
