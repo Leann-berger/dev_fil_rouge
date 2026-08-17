@@ -42,6 +42,9 @@ function createBrand(brand, note, desc, catBrand){
     pNote.className = "noteGenerale";
     buttonBrand.className = "nomMarque";
 
+    // ajout aria label
+    buttonBrand.setAttribut ="aria-label", `Information sur la marque ${brand.nom}`
+
     // creation de la version  2 de accueil
     createCatDeroulant(section, brand);
     
@@ -94,7 +97,8 @@ function createCatDeroulant(currentSection, brand){
     
     // Bouton proposer une atl
     const aAlt = document.createElement("a");
-    aAlt.setAttribute("href", "#")
+    aAlt.setAttribute = "href", "#";
+    aAlt.setAttribute = "tabindex", "-1";
     
     const buttonAlt = document.createElement("button");
     buttonAlt.innerText = "Proposer une alternative";
@@ -153,7 +157,8 @@ function createCat (nom, divMain, cat, brand){
     h2.innerText = nom;
     
     const a = document.createElement("a");
-    a.setAttribute("href","#");
+    a.setAttribute ="href","#";
+    a.setAttribute = "tabindex", "-1";
     
     const buttonSource = document.createElement("button");
     buttonSource.innerText = "Plus de n source";
@@ -161,7 +166,8 @@ function createCat (nom, divMain, cat, brand){
     const div2Section = document.createElement("div");
     
     const aNoterSourcer = document.createElement("a");
-    aNoterSourcer.setAttribute("href", "./NoterSourcer.html");
+    aNoterSourcer.setAttribute="href", "./NoterSourcer.html";
+    aNoterSourcer.setAttribute = "tabindex", "-1";
     
     const buttonNoterSourcer = document.createElement("button");
     buttonNoterSourcer.className = "noterSourcerCat";

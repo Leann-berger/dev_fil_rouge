@@ -28,6 +28,7 @@ function stockData(){
         desBrand: desBrand.value,
         note: note.value,
         catBrand: catBrand.value,
+        
         catsSource: {
             catEcolo : {
                 noteSource: "",

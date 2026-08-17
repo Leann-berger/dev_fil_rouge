@@ -14,17 +14,21 @@ nameBrands.forEach((element, index)=>{
         const desSection = currentSection.querySelector(".description")
         const catSection = currentSection.querySelector(".categories")
         const nameAndRate = currentSection.querySelector(".nomEtNote")
-        const alternative = currentSection.querySelector("#alternative")
+        const alternative = currentSection.querySelector(".alternative")
+        const brandName = currentSection.querySelector(".nomMarque")
 
         const catDeroulant =  currentSection.querySelector(".catDeroulant")
 
 
         catDeroulant.classList.toggle("open")
+        
        
         if (catDeroulant.className === "catDeroulant open"){
             catDeroulant.style.display = "flex"
             desSection.style.display = "none"; 
             catSection.style.display = "none"
+            brandName.setAttribute("tabindex", "1")
+            
             // Cache toutes les sections sauf la current section
             sectionMain.forEach((el)=>{
                 if (el !== currentSection && el !==emptySection){
@@ -41,6 +45,8 @@ nameBrands.forEach((element, index)=>{
                     el.style.display = "grid"
                 } 
             })
+            brandName.setAttribute("tabindex", "0")
+
         }
 
         ;
@@ -54,9 +60,7 @@ nameBrands.forEach((element, index)=>{
         nameAndRate.style.alignSelf = "start"
 
         
-        const brands = JSON.parse(localStorage.getItem("brand"))
-        console.log(brands)
-        
+        // const brands = JSON.parse(localStorage.getItem("brand"))
     })
 })
 
