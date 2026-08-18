@@ -24,10 +24,13 @@ nameBrands.forEach((element, index)=>{
         
        
         if (catDeroulant.className === "catDeroulant open"){
-            catDeroulant.style.display = "flex"
+            catDeroulant.style.display = "grid"
             desSection.style.display = "none"; 
             catSection.style.display = "none"
             brandName.setAttribute("tabindex", "1")
+            window.scrollTo({top : 0,
+                behavior : "smooth",
+            })
             
             // Cache toutes les sections sauf la current section
             sectionMain.forEach((el)=>{

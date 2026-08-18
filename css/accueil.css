@@ -142,7 +142,7 @@ header div h1 {
 #greenBand{
    position: absolute; 
    background-color: var(--color_ligth_green);
-   height: 800px;
+   height: 100vh;
    z-index: -1;
 }
 
@@ -594,8 +594,8 @@ footer section>a{
     /* main version déroulant */
     
     .catDeroulant{
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template: auto auto auto auto/ 1fr;
     }
 
 
@@ -604,7 +604,6 @@ footer section>a{
         flex-direction: column;
         align-items: start;
         justify-content: space-around;
-
     }
 
     .categorieMarque{
@@ -619,7 +618,8 @@ footer section>a{
 
     .alternative{
         display: flex;
-        flex-direction: column;   
+        flex-direction: column;  
+        margin: 10px ; 
     }
 
     .alternative p {
@@ -629,6 +629,7 @@ footer section>a{
 
     .toutesLesAlternatives{
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
     }
 
@@ -648,6 +649,7 @@ footer section>a{
     .marqueAlternative h3{
         width: 150px;
         height: 80px;
+        margin-top: 0;
     }
 
     .noterSourcerCat{
@@ -884,6 +886,7 @@ footer section>a{
     .alternative{
         display: flex;
         flex-direction: column;   
+        margin: 10px;
     }
 
     .alternative p {
@@ -893,6 +896,7 @@ footer section>a{
 
     .toutesLesAlternatives{
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
     }
 
@@ -1087,8 +1091,9 @@ footer section>a{
     /* main version deroulant */
 
     .catDeroulant{
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template : auto auto auto auto /1fr;
+        align-items: start;
     }
 
 
@@ -1112,6 +1117,7 @@ footer section>a{
     .alternative{
         display: flex;
         flex-direction: column;   
+        margin: 10px;
     }
 
     .alternative p {
@@ -1235,12 +1241,13 @@ footer section>a{
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-left: 10px;
     }
 
     /* green band behind the brands's name */
 
     #greenBand{
-    width: 15vw;
+    width: 16vw;
 
     }
 
@@ -1318,6 +1325,7 @@ footer section>a{
     .catDeroulant{
         display: flex;
         flex-direction: column;
+       margin-left: 50px;
     }
 
 
@@ -1341,6 +1349,7 @@ footer section>a{
     .alternative{
         display: flex;
         flex-direction: column;   
+        margin: 10px;
     }
 
     .alternative p {
@@ -1621,5 +1630,6 @@ footer section>a{
         height: 200px;
     }
 }
+
 
 
