@@ -8,7 +8,7 @@ const brands = JSON.parse(localStorage.getItem("brands"));
 
 // création d'une fonction pour créer la marque sur le fichier index.html
 
-function createBrand(brand, note, desc, catBrand){
+function createBrand(brand){
     
     // création des balises
     const section = document.createElement("section");
