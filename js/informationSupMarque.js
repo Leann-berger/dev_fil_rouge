@@ -1,28 +1,24 @@
 const nameBrands = document.querySelectorAll(".nomMarque");
 const sectionMain = document.querySelectorAll("main>section");
 const emptySection = document.querySelector("#emptySection")
-const pDes= document.querySelectorAll(".description");
-// const catBrand = document.querySelectorAll(".categories")
 
 
-
-nameBrands.forEach((element, index)=>{
+// ajout écoute au click sur chaque bouton marque
+nameBrands.forEach((element)=>{
     element.addEventListener("click", (event)=>{
         event.preventDefault();
 
+        // récupération élément dans la section
         const currentSection = element.closest("section");
         const desSection = currentSection.querySelector(".description")
         const catSection = currentSection.querySelector(".categories")
-        const nameAndRate = currentSection.querySelector(".nomEtNote")
-        const alternative = currentSection.querySelector(".alternative")
         const brandName = currentSection.querySelector(".nomMarque")
-
         const catDeroulant =  currentSection.querySelector(".catDeroulant")
 
-
+        // modif des classes de la div 
         catDeroulant.classList.toggle("open")
         
-       
+        // affichage en fonction de la classe de la div catDéroulant
         if (catDeroulant.className === "catDeroulant open"){
             catDeroulant.style.display = "grid"
             desSection.style.display = "none"; 
@@ -32,7 +28,7 @@ nameBrands.forEach((element, index)=>{
                 behavior : "smooth",
             })
             
-            // Cache toutes les sections sauf la current section
+            // Cache toutes les sections sauf la current section et la empty section
             sectionMain.forEach((el)=>{
                 if (el !== currentSection && el !==emptySection){
                     el.style.display = "none"
@@ -42,7 +38,7 @@ nameBrands.forEach((element, index)=>{
             catDeroulant.style.display = "none"
             desSection.style.display = "grid"; 
             catSection.style.display = "flex"
-            // Cache toutes les sections sauf la current section
+            // affiche toutes les sections sauf la current section 
             sectionMain.forEach((el)=>{
                 if (el !== currentSection && el !==emptySection){
                     el.style.display = "grid"
@@ -50,20 +46,7 @@ nameBrands.forEach((element, index)=>{
             })
             brandName.setAttribute("tabindex", "0")
 
-        }
-
-        ;
-        
-        
-        
-
-
-
-        // déplace la marque restante tout en haut.
-        nameAndRate.style.alignSelf = "start"
-
-        
-        // const brands = JSON.parse(localStorage.getItem("brand"))
+        };
     })
 })
 

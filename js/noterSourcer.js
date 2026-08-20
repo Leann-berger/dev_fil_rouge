@@ -46,8 +46,6 @@ function stockData(){
                 desSource: "",
             },
         },
-        
-        
         brandAlts: [],
     }
 

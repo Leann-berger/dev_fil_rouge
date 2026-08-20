@@ -32,9 +32,6 @@ function createBrand(brand){
     divBrand.append(pNote, buttonBrand);
     divCat.appendChild(h2);
 
-    // ajout aria-label sur la marque.
-    buttonBrand.setAttribute("aria-label" ,`Information sur la marque ${brand.nom}`)
-
     // ajout de class pour la lisibilité du html
     pDes.className = "description";
     divCat.className = "categories";
@@ -62,12 +59,12 @@ function createCatDeroulant(currentSection, brand){
     // Création div principale 
     const divMain = document.createElement("div");
     divMain.className = "catDeroulant";
-    divMain.style.display = "none"
+    // divMain.style.display = "none"
     
     // Création des trois catégories.
     createCat("ÉCOLOGIE", divMain, brand.catsSource.catEcolo, brand)
     createCat("TRANSPARENCE", divMain, brand.catsSource.catTrans, brand);
-    createCat("CONDITION", divMain, brand.catsSource.catCondi, brand);
+    createCat("CONDITION DE TRAVAIL", divMain, brand.catsSource.catCondi, brand);
     
     
     // creation section Alternative:
@@ -146,6 +143,7 @@ function createCat (nom, divMain, cat, brand){
     const div1Section = document.createElement("div");
     div1Section.className = "categorieMarque";
     
+    // ajout note en fonction de la source
     const pNote = document.createElement("p");
     if (cat.source !== ""){
         pNote.innerText = `${brand.note}/10`;
@@ -173,7 +171,7 @@ function createCat (nom, divMain, cat, brand){
     buttonNoterSourcer.className = "noterSourcerCat";
     buttonNoterSourcer.innerText = "Noter\net\nSourcer";
 
-
+    // ajout balise dans le HTML
     divMain.appendChild(section)
     section.append(div1Section, div2Section);
     div1Section.append(pNote, h2, a)
@@ -181,10 +179,6 @@ function createCat (nom, divMain, cat, brand){
     div2Section.appendChild(aNoterSourcer)
     aNoterSourcer.appendChild(buttonNoterSourcer);
 }
-
-
-
-
 
 
 
