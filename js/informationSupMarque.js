@@ -24,6 +24,7 @@ nameBrands.forEach((element)=>{
             desSection.style.display = "none"; 
             catSection.style.display = "none"
             brandName.setAttribute("tabindex", "1")
+            
             window.scrollTo({top : 0,
                 behavior : "smooth",
             })
