@@ -1,0 +1,405 @@
+:root{
+    --color_brown: #80645A;
+    --color_dark_green: #2D5016;
+    --color_ligth_green: #7CB342;
+    --color_black: #0D0D0D;
+    --color_beige: #F5F0E8;
+
+    --font_fam_montserrat: "Montserrat", sans-serif;
+    --font_fam_patrick: "Patrick Hand";
+
+    --font_size_montserrat: 1em;
+    --font_size_patrick: 1.7em;
+
+    --font_weight_montserrat: 500;
+    --font_weight_patrick: 400;
+
+    --border_dark_green: solid var(--color_dark_green) 3.5px;
+}
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--color_beige);
+}
+
+
+
+/* header */
+
+header{
+    background-color: var(--color_dark_green);
+    height: 100px;
+    border-bottom: solid var(--color_brown) 5px;
+}
+
+
+
+
+/* image header */
+
+
+header a:first-of-type img{
+    border-radius: 30px;
+    margin-left: 15px;
+}
+
+
+header a:nth-of-type(2) img{
+    border-radius: 100px;
+    border: solid 3px var(--color_beige);
+    margin-right: 15px;
+}
+
+
+
+/* search bar */
+
+header div nav{
+    align-self: center;
+    position: relative;
+}
+
+header div nav img{
+    width: 90%;
+    height: 90%;  
+}
+
+header div nav button{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+
+header div nav button:hover {
+    cursor: pointer;
+}
+
+
+header div nav input{
+    width: 60vw;
+    background-color: var(--color_beige);
+    padding: 0.4vw;
+    border-radius: 5px;
+    border: none;
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+}
+
+
+
+
+
+
+/*  header title */
+
+header div h1 {
+    font-family: var(--font_fam_patrick);
+    font-weight: var(--font_weight_patrick);
+    font-size: 4em;
+    color: var(--color_beige);
+    margin: -15px 0;
+}
+
+
+
+/* Formulaire */
+form div {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color_ligth_green);
+    color: var(--color_black);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+
+input, select, textarea{
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    background-color: var(--color_beige);
+    border: solid var(--color_dark_green) 2px;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+label{
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    margin: 20px 0 0 0;
+}
+
+button{
+    background-color: var(--color_ligth_green);
+    color: var(--color_black);
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    border-radius: 5px;
+    border: solid var(--color_dark_green) 2px;
+}
+
+
+
+
+/* affichage note au dessu du curseur */
+p{
+    margin: 0;
+    align-self: center;
+    color: var(--color_black);
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+}
+
+/* cuseur pour noter */
+
+#note{
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background-color: var(--color_ligth_green);
+
+}
+
+
+/* curseur fonctionnel pour chrome et autre */
+
+#note::-webkit-slider-runnable-track{
+    background: var(--color_beige);
+    border-radius: 5px;
+    border: solid var(--color_dark_green) 1px;
+    height: 15px;
+}
+
+#note::-webkit-slider-thumb{
+    background-color: var(--color_brown);
+    border: solid var(--color_dark_green) 1px;
+    border-radius: 5px
+}
+
+
+
+/* curseur fonctionnel pour firefox */
+
+#note::-moz-range-track{
+    background: var(--color_beige);
+    border-radius: 5px;
+    border: solid var(--color_dark_green) 1px;
+    height: 15px;
+
+}
+
+#note::-moz-range-thumb{
+    background-color: var(--color_brown);
+    border: solid var(--color_dark_green) 1px;
+    border-radius: 5px;
+}
+
+
+/* footer  */
+
+footer{
+    background-color: var(--color_dark_green);
+    border-top: solid var(--color_brown) 5px;
+    padding: 0 10px;
+}
+
+footer section>p, footer section>a{
+    color: var(--color_beige);
+    font-family: var(--font_fam_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    font-size: var(--font_size_montserrat);
+}
+
+
+footer section>a{
+    padding: 15px;
+}
+
+
+
+
+@media(min-width:0px){
+    
+    /* header */
+
+    header{
+        height: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+
+    /* image header */
+
+    header img{
+        width: 60px;
+        height: 60px;
+        align-self: center;
+    }
+
+
+    header a:first-of-type{
+        grid-area: 1/1;
+        justify-self: start;
+    }
+
+    header a:nth-of-type(2){
+        grid-area: 1/3;
+        justify-self: end;
+    }
+
+
+    /* div (search bar + title ) */
+
+    header div{
+        grid-area: 2/ 1/ 2 /span 3 ;
+        justify-self: center;
+    }
+
+
+    header div nav input{
+           height: 25px;
+           width: 70VW;
+           
+    }
+
+
+    header div h1{
+        display: none;
+    }
+
+
+
+    /* Fomulaire */
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form div{
+        align-self: center;
+        width: 80vw;
+    }
+    
+
+    label{
+        padding: 0 0 0 8vw;
+    }
+
+    /* Bouton validez*/
+    #valider{
+    padding: 10px;
+    width: 120px;
+    align-self: end;
+    margin: 30px;
+    }
+
+    /* Taille description */
+
+    #descriptionMarque, #descriptionSource{
+        height: 70px;
+    }
+
+
+
+
+
+    /* footer  */
+
+    footer{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    footer section:nth-of-type(2){
+        display: flex;
+        align-items: end;
+        
+    }
+}
+
+
+@media(min-width : 500px){
+    /* header */
+
+    header{
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    /* image header */
+
+    header img{
+        width: 90px;
+        height: 90px;
+        align-self: center;
+    }
+
+
+    /* div (search bar + title ) */
+
+    header div{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+
+
+    header div nav input{
+           height: 40px;
+           width: 55VW;
+    }
+
+    header div h1{
+        display: none;
+    }
+}
+@media (min-width: 800px){
+    form{
+        background-color: #7CB342;
+        width: 70vw;
+        border-left: solid var(--color_dark_green) 3px;
+        border-right: solid var(--color_dark_green) 3px;
+    }
+    main{
+        display: flex;
+        justify-content: center;
+    }
+    form div{
+        width: 60vw;
+    }
+
+    #valider{
+        background-color: var(--color_dark_green);
+        color: var(--color_beige);
+        border: solid var(--color_beige) 2px;
+    }
+}
+
+@media (min-width: 1545px){
+    form{
+        background-color: #7CB342;
+        width: 60vw;
+        border-left: solid var(--color_dark_green) 3px;
+        border-right: solid var(--color_dark_green) 3px;
+    }
+    form div{
+        width: 50vw;
+    }
+}
