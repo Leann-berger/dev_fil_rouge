@@ -1,0 +1,12 @@
+{
+    "name": "leann-berger/dev_fil_rouge",
+    "autoload": {
+        "psr-4": {
+            "App\\":"src/"
+        }
+    },
+    "require": {
+        "symfony/var-dumper": "^8.1",
+        "vlucas/phpdotenv": "^5.7"
+    }
+}
