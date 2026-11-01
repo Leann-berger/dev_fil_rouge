@@ -8,15 +8,19 @@ class Brand
     private ?string $alternativeBrand = null;
     private string $descriptionBrand;
     private string $nameBrand;
+    private ?int $idUser;
+    private int $idBrandCategory;
 
     //construct
     public function __construct(
         string $descriptionBrand,
-        string $nameBrand
+        string $nameBrand,
+        int $idBrandCategory
     ){
 
         $this->descriptionBrand = $descriptionBrand;
         $this->nameBrand = $nameBrand;
+        $this->idBrandCategory = $idBrandCategory;
     }
 
     //getter et setter
@@ -51,7 +55,7 @@ class Brand
         $this->alternativeBrand = $alternativeBrand;
     }
 
-        public function getId(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -59,6 +63,16 @@ class Brand
     public function setId(?int $id): void
     {
         $this->id = $id;
+    }
+
+      public function getIdBrandCategory(): int
+    {
+        return $this->idBrandCategory;
+    }
+
+    public function setIdBrandCategory(?int $idBrandCategory): void
+    {
+        $this->idBrandCategory = $idBrandCategory;
     }
 
 
@@ -69,12 +83,14 @@ class Brand
         //creation de l'objet user
         $newBrand = new Brand(
             $brand["descriptionBrand"],
-            $brand["nameBrand"]
+            $brand["nameBrand"],
+            $brand["idBrandCategory"]
         );
 
         //set des attribut restant
         $newBrand->setId($brand["id_brand"] ?? null);
         $newBrand->setAlternativeBrand($brand["alternativeBrand"] ?? null);
+        $newBrand->setIdBrandCategory($brands["idBrandCategory"] ?? null);
 
         //retourne l'objet brand
         return $newBrand;
