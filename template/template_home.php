@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../public/css/accueil.css">
+    <link rel="stylesheet" href="/css/accueil.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -13,17 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <header>
-        <a href="./index.html" aria-label="Actualiser la page" tabindex="1"><img src="../img/logo_fil_rouge.png" alt="image du logo d'Ethima"></a>
-        <div>
-            <h1>ETHIMA</h1>
-            <nav>
-                <input type="search" id="search_bar" name="search_bar" placeholder="Rechercher une marque..." aria-label="Barre de recherche" tabindex="1">
-                <button aria-label="Rechercher" tabindex="1"><img src="../img/search.svg" alt="icone loupe"></button>
-            </nav>
-        </div>
-        <a href="#" aria-label="Liens vers votre profile" tabindex="1"><img src="../img/photo_profil_fil_rouge.png" alt="image de votre photo de profil"></a>
-    </header>
+    <?php include 'component/header.php'; ?>
     
     <div id="centerOfPage">
         <main class="scroller" tabindex="-1" >
@@ -55,7 +45,7 @@
                             </a>
                         </div>
                         <div>
-                            <a href="./NoterSourcer.html">
+                            <a href="/noterSourcer">
                                 <button class="noterSourcerCat">
                                     Noter <br> et <br> Sourcer 
                                 </button>
@@ -73,7 +63,7 @@
                             </a>
                         </div>
                         <div>
-                            <a href="./NoterSourcer.html">
+                            <a href="/noterSourcer">
                                 <button class="noterSourcerCat">
                                     Noter <br> et <br> Sourcer 
                                 </button>
@@ -91,7 +81,7 @@
                             </a>
                         </div>
                         <div>
-                            <a href="./NoterSourcer.html">
+                            <a href="/noterSourcer">
                                 <button class="noterSourcerCat">
                                     Noter <br> et <br> Sourcer 
                                 </button>
@@ -200,9 +190,9 @@
             <div id="myButton">
                 <button tabindex="1">
                     Filtrer
-                    <img src="../img/funnel.svg" alt="icone Filtrer">
+                    <img src="/assets/img/funnel.svg" alt="icone Filtrer">
                 </button>
-                <a href="./NoterSourcer.html" tabindex="-1"><button tabindex="1">Noter<br> et <br>Sourcer</button></a>
+                <a href="/noterSourcer" tabindex="-1"><button tabindex="1">Noter<br> et <br>Sourcer</button></a>
             </div>
             
             <aside>

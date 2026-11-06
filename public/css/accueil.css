@@ -105,7 +105,13 @@ header div h1 {
     margin: -15px 0;
 }
 
-
+/* header connexion inscription */
+header a{
+    font-family: var(--font_fam_montserrat);
+    font-size: var(--font_size_montserrat);
+    font-weight: var(--font_weight_montserrat);
+    color: var(--color_beige);
+}
 
 /* main section */
 

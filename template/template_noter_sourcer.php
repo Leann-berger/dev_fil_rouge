@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../public/css/NoterSourcer.css">
+    <link rel="stylesheet" href="/css/NoterSourcer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -13,18 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <header>
-        <a href="./index.html" aria-label="Actualiser la page"><img src="../img/logo_fil_rouge.png" alt="image du logo d'Ethima"></a>
-        <div>
-            <h1>ETHIMA</h1>
-            <nav>
-                <input type="search" id="search_bar" name="search_bar" placeholder="Rechercher une marque..." aria-label="Barre de recherche">
-                <button aria-label="Rechercher"><img src="../img/search.svg" alt="icone loupe"></button>
-            </nav>
-        </div>
-        <a href="#" aria-label="Liens vers votre profile"><img src="../img/photo_profil_fil_rouge.png" alt="image de votre photo de profil"></a>
-    </header>
-
+    <?php include 'component/header.php'; ?>
 
     <main>
         <form method="post">

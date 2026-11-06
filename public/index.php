@@ -14,38 +14,30 @@ $path = isset($url["path"]) ? $url["path"] : "/";
 
 //importer
 use App\Controller\HomeController;
-use App\Controller\CategoryController;
+use App\Controller\NoterSourcerController;
 use App\Controller\UserController;
-use App\Controller\BookController;
+
+
 
 //instancier les controllers
 $homeController = new HomeController();
-$categoryController = new CategoryController();
+$noterSourcerController = new NoterSourcerController();
 $userController = new UserController();
-$bookController = new BookController();
+
 
 //test des valeurs du path
 switch ($path) {
     case '/':
         $homeController->home();
         break;
-    case '/register':
-        $userController->register();
+    case '/noterSourcer' :
+        $noterSourcerController->noterSourcer();
         break;
     case '/login':
         $userController->login();
         break;
-    case '/logout':
-        $userController->logout();
-        break;
-    case '/category/new':
-        $categoryController->addCategory();
-        break;
-    case '/categories':
-        $categoryController->showAllCategorie();
-        break;
-    case '/book/new':
-        $bookController->addBook();
+    case '/register':
+        $userController->register();
         break;
     default:
         echo "Erreur 404";
