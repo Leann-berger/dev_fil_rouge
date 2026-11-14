@@ -163,7 +163,7 @@ class User
             $user["firstname"],
             $user["lastname"],
             $user["email"],
-            $user["password"],
+            $user["psw"],
             new DateTime($user["age"]),
             $reputation,
             $role

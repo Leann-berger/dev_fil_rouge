@@ -41,6 +41,8 @@ switch ($path) {
     case '/register':
         $userController->register();
         break;
+    case '/logout':
+        $userController->logout();
     default:
         echo "Erreur 404";
         break;

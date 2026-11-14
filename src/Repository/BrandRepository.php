@@ -27,7 +27,7 @@ class BrandRepository
             $id = $this->connexion->lastInsertId();
             $brand->setId($id);
         } catch(\PDOException $e){
-            echo "Erreur " . $e->getMessage();
+            error_log("Erreur : " . $e->getMessage());
         }
         return $brand;  
     }
@@ -43,7 +43,7 @@ class BrandRepository
                 $brand = Brand::hydrate($data);
             }
         } catch(\PDOException $e) {
-            echo "Erreur : " . $e->getMessage();
+            error_log("Erreur : " . $e->getMessage());
         }
         return $brand ?? null;
     }

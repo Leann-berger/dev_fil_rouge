@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/accueil.css">
 </head>
 <body>
+    <?php include 'component/header.php'; ?>
+    <h2>Inscription</h2>
+    <?php if (!empty($data["msg"])): ?>
+        <p><?= htmlspecialchars($data["msg"]) ?></p>
+    <?php endif; ?>
     <form action="" method="POST" enctype="multipart/form-data">
         <label for="firstname">Entrez votre Prénom : </label>
         <input type="text" name="firstname" placeholder="Ex: Pierre">

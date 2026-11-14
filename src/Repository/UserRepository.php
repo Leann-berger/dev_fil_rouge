@@ -22,20 +22,22 @@ class UserRepository
     public function create(User $user): void
     {
         try{
-            $sql = "INSERT INTO `user`(firstname, lastname, email, `password`, img_profil, id_role, id_reputation) VALUE(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO `user`(pseudo_user, first_name_user, name_user, email_user, date_birth_user, psw_user, profile_picture_user, id_role, id_reputation) VALUE(?,?,?,?,?,?,?,?,?)";
             $stmt = $this->connect->prepare($sql);
-            $stmt->bindValue(1, $user->getFirstname(), \PDO::PARAM_STR);
-            $stmt->bindValue(2, $user->getLastname(), \PDO::PARAM_STR);
-            $stmt->bindValue(3, $user->getEmail(), \PDO::PARAM_STR);
-            $stmt->bindValue(4, $user->getPsw(), \PDO::PARAM_STR);
-            $stmt->bindValue(5, $user->getImgProfil(), \PDO::PARAM_STR);
-            $stmt->bindValue(6, $user->getRole()->getId(), \PDO::PARAM_STR);
-            $stmt->bindValue(7, $user->getReputation()->getId(), \PDO::PARAM_STR);
+            $stmt->bindValue(1,$user->getPseudo(),\PDO::PARAM_STR);
+            $stmt->bindValue(2, $user->getFirstname(), \PDO::PARAM_STR);
+            $stmt->bindValue(3, $user->getLastname(), \PDO::PARAM_STR);
+            $stmt->bindValue(4, $user->getEmail(), \PDO::PARAM_STR);
+            $stmt->bindValue(5, $user->getAge()->format("Y-m-d"), \PDO::PARAM_STR);
+            $stmt->bindValue(6, $user->getPsw(), \PDO::PARAM_STR);
+            $stmt->bindValue(7, $user->getImgProfil(), \PDO::PARAM_STR);
+            $stmt->bindValue(8, $user->getRole()->getId(), \PDO::PARAM_STR);
+            $stmt->bindValue(9, $user->getReputation()->getId(), \PDO::PARAM_STR);
             $stmt->execute();
             $id = $this->connect->lastInsertId();
             $user->setId($id);
         } catch(PDOException $e){
-            echo "Erreur " . $e->getMessage();
+            error_log("Erreur : " . $e->getMessage());
         }
     }
 
@@ -43,11 +45,13 @@ class UserRepository
     public function findByEmail(string $email): ?User
     {   
         try{
-            $sql = "SELECT u.pseudo_user, u.first_name_user, u.name_user, u.email_user, u.date_birth_user, re.reputation, re.id_reputation, ro.`role`, ro.id_role FROM `user` AS u
+            $sql = "SELECT u.id_user, u.pseudo_user AS pseudo, u.first_name_user AS firstname, u.name_user AS lastname, u.email_user AS email, u.date_birth_user AS age,
+            u.psw_user AS psw, u.profile_picture_user AS img_profil, re.id_reputation, re.reputation, ro.id_role, ro.`role` FROM `user` AS u
             INNER JOIN reputation AS re ON re.id_reputation = u.id_reputation
             INNER JOIN `role` AS ro ON ro.id_role = u.id_role
-            WHERE u.email_user = :email";
+            WHERE u.email_user = ?";
             $stmt = $this->connect->prepare($sql);
+            $stmt->bindValue(1,$email, \PDO::PARAM_STR);
             $stmt->execute();
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
 
@@ -57,7 +61,7 @@ class UserRepository
                 $user = User::hydrate($data, $role, $reputation);
             }
         } catch(\PDOException $e){
-            echo "Erreur " . $e->getMessage();
+            error_log("Erreur : " . $e->getMessage());
         }
         return $user ?? null;
     }
@@ -65,11 +69,13 @@ class UserRepository
     public function findByPseudo(string $pseudo): ?User
     {
         try{
-            $sql = "SELECT u.pseudo_user, u.first_name_user, u.name_user, u.email_user, u.date_birth_user, re.reputation, re.id_reputation, ro.id_role, ro.`role` FROM `user` AS u
+            $sql = "SELECT u.id_user, u.pseudo_user AS pseudo, u.first_name_user AS firstname, u.name_user AS lastname, u.email_user AS email, u.date_birth_user AS age,
+            u.psw_user AS psw, u.profile_picture_user AS img_profil, re.id_reputation, re.reputation, ro.id_role, ro.`role` FROM `user` AS u
             INNER JOIN reputation AS re ON re.id_reputation = u.id_reputation
             INNER JOIN `role` AS ro ON ro.id_role = u.id_role
-            WHERE u.pseudo_user = :pseudo";
+            WHERE u.pseudo_user = ?";
             $stmt = $this->connect->prepare($sql);
+            $stmt->bindValue(1,$pseudo, \PDO::PARAM_STR);
             $stmt->execute();
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
             if($data){
@@ -78,7 +84,7 @@ class UserRepository
                 $user = User::hydrate($data, $role, $reputation);
             }
         } catch(\PDOException $e){
-            echo "Erreur " . $e->getMessage();
+            error_log("Erreur : " . $e->getMessage());
         }
         return $user ?? null;
     }

@@ -9,11 +9,14 @@
 <body>
     <?php include 'component/header.php'; ?>
     <h2>Connexion</h2>
-    <form action="" method="POSTE">
+    <?php if (!empty($data["msg"])): ?>
+        <p><?= htmlspecialchars($data["msg"]) ?></p>
+    <?php endif; ?>
+    <form action="" method="POST">
         <label for="email">Entrez votre email : </label>
         <input type="text" name="email" placeholder="pierre.dupont@exemple.com">
         <label for="password">Entrez votre mot de passe : </label>
-        <input type="text" name="password" placeholder="............">
+        <input type="password" name="password" >
         <input type="submit" name="submit" value="Valider">
     </form>
 </body>

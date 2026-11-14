@@ -49,7 +49,7 @@ class UserService
             }
 
         //Tests si les 2 mot de sont différents
-        if ($_POST['password'] != $_POST['comfirm-password'])
+        if ($_POST['password'] != $_POST['confirm-password'])
             {
                 return "Les mots de passe ne sont pas identique.";
             }
@@ -113,5 +113,31 @@ class UserService
 
     public function connectUser(): array
     {
+        if(empty($_POST["email"]) || empty($_POST["password"])){
+            return ["msg"=>"Veuillez remplir tous les champs."];
+        }
+
+        $email = Tools::sanitize($_POST['email']);
+
+        $user = $this->userRepository->findByEmail($email);
+
+        if($user === null || !password_verify($_POST["password"], $user->getPsw()))
+        {
+            return ["msg"=>"Email ou mot de passe incorrect"];
+        }
+        
+        // créer un nouvelle identifiant de session.
+        session_regenerate_id(true);
+
+        //Stock les infos de session
+        $_SESSION["user"] = [
+            "id" => $user->getId(),
+            "pseudo" => $user->getPseudo(),
+            "email" => $user->getEmail(),
+            "role" => $user->getRole()->getRole(),
+            "reputation" => $user->getReputation()->getReputation()
+        ];
+
+        return ["success" => true];
     }
 }

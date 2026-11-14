@@ -8,6 +8,11 @@
         </nav>
     </div>
     <a href="#" aria-label="Liens vers votre profile" tabindex="1"><img src="/assets/img/profil/photo_profil_fil_rouge.png" alt="image de votre photo de profil"></a>
-    <a href="/login">connexion</a>
-    <a href="/register">inscription</a>
+    <?php if (isset($_SESSION["user"])): ?>
+        <span><?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span>
+        <a href="/logout">déconnexion</a>
+    <?php else: ?>
+        <a href="/login">connexion</a>
+        <a href="/register">inscription</a>
+    <?php endif; ?>
 </header>
