@@ -5,14 +5,23 @@ namespace App\Service;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Utils\Tools;
+use App\Service\UploadService;
+use App\Repository\RoleRepository;
+use App\Repository\ReputationRepository;
 
 class UserService 
 {
     private UserRepository $userRepository;
+    private RoleRepository $roleRepository;
+    private ReputationRepository $reputationRepository;
+    private UploadService $upload;
 
     public function __construct()
     {
         $this->userRepository = new UserRepository();
+        $this->roleRepository = new RoleRepository();
+        $this->reputationRepository = new ReputationRepository();
+        $this->upload = new UploadService();
     }
 
 
@@ -25,7 +34,7 @@ class UserService
             empty($_POST['pseudo']) ||
             empty($_POST['email']) ||
             empty($_POST['password']) ||
-            empty($_POST['comfirm-password'])
+            empty($_POST['confirm-password'])
         ) {
             return "Veuillez remplir tout les champs obligatoir du formulaire.";
         }
@@ -67,9 +76,42 @@ class UserService
             }
 
         //Hasher le mot de passe
+        $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
+        //récupération du rôle
+        $role = $this->roleRepository->findByName('utilisateur');
+
+        if ($role === null) {
+            return "Le rôle utilisateur est introuvable.";
+        }
+
+
+        //récupération de la réputaion
+        $reputation = $this->reputationRepository->findByName('novice');
+
+        if ($reputation === null) {
+            return "La réputation novice est introuvable.";
+        }
+
+
         //hydrater l'objet User
+        $newUser = User::hydrate($_POST, 
+        $role,
+        $reputation);
+
         //Setter le mot de passe hashé
+        $newUser->setPsw($hash);
+
         //importer l'image
+        $newUser->setImgProfil($this->upload->uploadFile($_FILES["img_profil"], 'assets/img/profil/'));
+
         //Ajouter en BDD le compte
+        $this->userRepository->create($newUser);
+
+        return "Le compte " . $_POST["email"] . " a été ajouté en BDD";
+    }
+
+    public function connectUser(): array
+    {
     }
 }

@@ -7,7 +7,7 @@
             <button aria-label="Rechercher" tabindex="1"><img src="/assets/img/search.svg" alt="icone loupe"></button>
         </nav>
     </div>
-    <a href="#" aria-label="Liens vers votre profile" tabindex="1"><img src="/assets/img/photo_profil_fil_rouge.png" alt="image de votre photo de profil"></a>
+    <a href="#" aria-label="Liens vers votre profile" tabindex="1"><img src="/assets/img/profil/photo_profil_fil_rouge.png" alt="image de votre photo de profil"></a>
     <a href="/login">connexion</a>
     <a href="/register">inscription</a>
 </header>

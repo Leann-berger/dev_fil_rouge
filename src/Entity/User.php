@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use DateTime;
+
+
 class User
 {
     private ?int $id = null;
@@ -10,8 +13,11 @@ class User
     private string $lastname;
     private string $email;
     private string $psw;
+    private DateTime $age;
     private \DateTimeImmutable $createAt;
     private ?string $imgProfil;
+    private Reputation $reputation;
+    private Role $role;
 
     //function construct
     public function __construct(
@@ -20,13 +26,19 @@ class User
         string $lastname,
         string $email,
         string $psw,
+        DateTime $age,
+        Reputation $reputation,
+        Role $role
     ){
         $this->pseudo = $pseudo;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
         $this->psw = $psw;
+        $this->age = $age;
         $this->createAt = new \DateTimeImmutable();
+        $this->reputation = $reputation;
+        $this->role = $role;
     }
 
     //getter et setter
@@ -101,6 +113,26 @@ class User
         $this->createAt = $createAt;
     }
 
+    public function getRole(): Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(Role $role): void
+    {
+        $this->role = $role;
+    }
+
+    public function getReputation(): Reputation
+    {
+        return $this->reputation;
+    }
+
+    public function setReputation(Reputation $reputation): void
+    {
+        $this->reputation = $reputation;
+    }
+
     public function getImgProfil(): ?string
     {
         return $this->imgProfil;
@@ -111,10 +143,19 @@ class User
         $this->imgProfil = $imgProfil;
     }
 
+    public function getAge(): DateTime
+    {
+        return $this->age;
+    }
+
 
     //function pour hydrater
 
-    public static function hydrate(array $user): User
+    public static function hydrate(
+        array $user, 
+        Role $role, 
+        Reputation $reputation
+        ): User
     {
         //creation de l'objet user
         $newUser = new User(
@@ -122,7 +163,10 @@ class User
             $user["firstname"],
             $user["lastname"],
             $user["email"],
-            $user["psw"]
+            $user["password"],
+            new DateTime($user["age"]),
+            $reputation,
+            $role
         );
 
         //set des attribut restant
