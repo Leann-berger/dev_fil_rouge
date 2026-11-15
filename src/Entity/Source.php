@@ -5,7 +5,6 @@ namespace App\Entity;
 class Source
 {
     private ?int $id = null;
-    private string $recap;
     private string $description;
     private string $url;
     private ?int $like = 0;
@@ -13,11 +12,9 @@ class Source
 
     //function construct
     public function __construct(
-        string $recap,
         string $description,
         string $url
     ){
-        $this->recap = $recap;
         $this->description = $description;
         $this->url = $url;
         $this->createAt = new \DateTimeImmutable();
@@ -33,16 +30,6 @@ class Source
     public function setId(?int $id): void
     {
         $this->id = $id;
-    }
-
-    public function getRecap(): string
-    {
-        return $this->recap;
-    }
-
-    public function setRecap(string $recap): void
-    {
-        $this->recap = $recap;
     }
 
     public function getDescription(): string

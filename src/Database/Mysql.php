@@ -4,8 +4,17 @@ namespace App\Database;
 
 class Mysql
 {
+    // garde sa valeur pendant toute la durée de la requête.
+    private static ?\PDO $pdo = null;
+
     public static function connectBdd(): \PDO
     {
+        // Si la connexion existe déjà, on la renvoie sans en recréer une
+        if (self::$pdo !== null) {
+            return self::$pdo;
+        }
+
+        // Sinon elle la créer
         $hostValue = $_ENV["DATABASE_HOST"] ?? "localhost";
         $port = $_ENV["DATABASE_PORT"] ?? null;
 
@@ -18,8 +27,7 @@ class Mysql
             . ';dbname=' . $_ENV["DATABASE_NAME"]
             . ';charset=utf8mb4';
 
-        // Creation d'un objet PDO
-        return new \PDO(
+        self::$pdo = new \PDO(
             $dsn,
             $_ENV["DATABASE_USERNAME"],
             $_ENV["DATABASE_PASSWORD"],
@@ -29,5 +37,7 @@ class Mysql
                 \PDO::ATTR_EMULATE_PREPARES => false,
             ]
         );
+
+        return self::$pdo;
     }
 }

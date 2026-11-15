@@ -43,6 +43,7 @@ switch ($path) {
         break;
     case '/logout':
         $userController->logout();
+        break;
     default:
         echo "Erreur 404";
         break;

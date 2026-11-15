@@ -5,22 +5,20 @@ namespace App\Entity;
 class Brand
 {
     private ?int $id =null;
-    private ?string $alternativeBrand = null;
     private string $descriptionBrand;
     private string $nameBrand;
-    private ?int $idUser;
-    private int $idBrandCategory;
+    private CategoryBrand $categoryBrand;
 
     //construct
     public function __construct(
         string $descriptionBrand,
         string $nameBrand,
-        int $idBrandCategory
+        CategoryBrand $categoryBrand
     ){
 
         $this->descriptionBrand = $descriptionBrand;
         $this->nameBrand = $nameBrand;
-        $this->idBrandCategory = $idBrandCategory;
+        $this->categoryBrand = $categoryBrand;
     }
 
     //getter et setter
@@ -45,16 +43,6 @@ class Brand
         $this->nameBrand = $nameBrand;
     }
 
-    public function getAlternativeBrand(): ?string
-    {
-        return $this->alternativeBrand;
-    }
-
-    public function setAlternativeBrand(?string $alternativeBrand): void
-    {
-        $this->alternativeBrand = $alternativeBrand;
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -65,32 +53,30 @@ class Brand
         $this->id = $id;
     }
 
-      public function getIdBrandCategory(): int
+      public function getCategoryBrand(): CategoryBrand
     {
-        return $this->idBrandCategory;
+        return $this->categoryBrand;
     }
 
-    public function setIdBrandCategory(?int $idBrandCategory): void
+    public function setCategoryBrand(CategoryBrand $categoryBrand): void
     {
-        $this->idBrandCategory = $idBrandCategory;
+        $this->categoryBrand = $categoryBrand;
     }
 
 
     //function pour hydrater
 
-    public static function hydrate(array $brand): Brand
+    public static function hydrate(array $brand, CategoryBrand $categoryBrand, ?User $user = null): Brand
     {
         //creation de l'objet user
         $newBrand = new Brand(
-            $brand["descriptionBrand"],
-            $brand["nameBrand"],
-            $brand["idBrandCategory"]
+            $brand["description_brand"],
+            $brand["name_brand"],
+            $categoryBrand
         );
 
         //set des attribut restant
         $newBrand->setId($brand["id_brand"] ?? null);
-        $newBrand->setAlternativeBrand($brand["alternativeBrand"] ?? null);
-        $newBrand->setIdBrandCategory($brands["idBrandCategory"] ?? null);
 
         //retourne l'objet brand
         return $newBrand;

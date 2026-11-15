@@ -44,7 +44,7 @@ class CategoryGrade
 
     public static function hydrate(array $categoryGrade): CategoryGrade
     {
-        //creation de l'objet user
+        //creation de l'objet nameCategoryGrade
         $newCategoryGrade = new CategoryGrade(
             $categoryGrade["nameCategoryGrade"]
         );

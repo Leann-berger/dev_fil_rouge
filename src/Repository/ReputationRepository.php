@@ -27,7 +27,7 @@ class ReputationRepository
             $stmt->execute();
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
             if($data){
-                $reputation = reputation::hydrate($data);
+                $reputation = Reputation::hydrate($data);
             }
         } catch(\PDOException $e){
             error_log("Erreur : " . $e->getMessage());

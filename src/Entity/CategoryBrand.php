@@ -41,7 +41,7 @@ class CategoryBrand
 
     public static function hydrate(array $categoryBrand): CategoryBrand
     {
-        //creation de l'objet user
+        //creation de l'objet categoryBrand
         $newCategoryBrand = new CategoryBrand(
             $categoryBrand["categoryBrand"]
         );

@@ -6,6 +6,6 @@ class NoterSourcerController extends AbstractController
 {
     public function noterSourcer(): void
     {
-        $this->render('noterSourcer', 'Noter et Sourcer');
+        $this->render('noter_sourcer', 'Noter et Sourcer');
     }
 }

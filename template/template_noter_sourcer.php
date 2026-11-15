@@ -29,22 +29,22 @@
                 <input type="text" id="name" name="name" placeholder="Ex: Décathlon" required>
             </div>
 
-            <label for="categorieMarque" class="ajoutUniquement">De quelle catégorie fait partie cette marque?</label>
+            <label for="categorieBrand" class="ajoutUniquement">De quelle catégorie fait partie cette marque?</label>
             <div class="ajoutUniquement">
-                <select name="categorieMarque" id="categorieMarque" required>
+                <select name="categorieBrand" id="categorieBrand" required>
                     <option value="">Choisissez une catégorie</option>
-                    <option value="TEXTILE">Textile</option>
-                    <option value="SPORT">Sport</option>
-                    <option value="ALIMENTAIRE">Alimentaire</option>
-                    <option value="VEHICULE">Véhicule</option>
-                    <option value="LIBRAIRIE, DISQUAIRE">Librairie, Disquaire</option>
-                    <option value="COSMÉTIQUE">Cosmétique</option>
+                    <option value="Textile">Textile</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Alimentaire">Alimentaire</option>
+                    <option value="Vehicule">Véhicule</option>
+                    <option value="Librairie, Disquaire">Librairie, Disquaire</option>
+                    <option value="Cosmetique">Cosmétique</option>
                 </select>
             </div>
 
-            <label for="descriptionMarque" class="ajoutUniquement">Description de la marque: </label>
+            <label for="descriptionBrand" class="ajoutUniquement">Description de la marque: </label>
             <div class="ajoutUniquement">
-                <textarea id="descriptionMarque" name="descriptionMarque" maxlength="120" minlength="20" placeholder="Écrivez une description simple de la marque." required></textarea>
+                <textarea id="descriptionBrand" name="descriptionBrand" maxlength="120" minlength="20" placeholder="Écrivez une description simple de la marque." required></textarea>
             </div>
 
             <label for="categories">Choisissez la catégorie que vous souhaitez noter:</label>
