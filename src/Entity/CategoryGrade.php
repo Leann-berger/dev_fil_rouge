@@ -5,12 +5,12 @@ namespace App\Entity;
 class CategoryGrade
 {
     private ?int $id = null;
-    private int $nameCategoryGrade;
+    private string $nameCategoryGrade;
 
     //construct
 
     public function __construct(
-        int $nameCategoryGrade
+        string $nameCategoryGrade
     ){
         $this->nameCategoryGrade = $nameCategoryGrade;
     }
@@ -46,11 +46,11 @@ class CategoryGrade
     {
         //creation de l'objet nameCategoryGrade
         $newCategoryGrade = new CategoryGrade(
-            $categoryGrade["nameCategoryGrade"]
+            $categoryGrade["name_grade_category"]
         );
 
         //set des attribut restant
-        $newCategoryGrade->setId($categoryGrade["id_categoryGrade"] ?? null);
+        $newCategoryGrade->setId($categoryGrade["id_grade_category"] ?? null);
         
         //retourne l'objet nameCategoryGrade
         return $newCategoryGrade;

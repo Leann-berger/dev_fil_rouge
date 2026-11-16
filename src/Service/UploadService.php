@@ -6,18 +6,21 @@ class UploadService
 {
     public function uploadFile(array $file, string $uploadPath): ?string
     {
-        if (isset($file)) {
-            $tmp_name = $file["tmp_name"];
-            $name_file = $file["name"];
-            //récupération de l'extension
-            $ext = $this->getFileExtension($name_file);
-            //renommer le fichier
-            $name_file = $this->renameFile($ext);
-            //Déplacement du fichier aprés upload
-            move_uploaded_file($tmp_name, $uploadPath . $name_file);
-            return $name_file;
+        // Pas de fichier choisi, ou erreur d'envoi et on ne stocke rien
+        if ($file["error"] !== UPLOAD_ERR_OK) {
+            return null;
         }
-        return null;
+
+        $ext = $this->getFileExtension($file["name"]);
+
+        // Seulement des images
+        if (!in_array($ext, ["jpg", "jpeg", "png", "webp", "gif"], true)) {
+            return null;
+        }
+
+        $name_file = $this->renameFile($ext);
+        move_uploaded_file($file["tmp_name"], $uploadPath . $name_file);
+        return $name_file;
     }
 
 

@@ -40,7 +40,7 @@ class GradeCategoryRepository
     {   
         try{
             $sql = "SELECT cg.id_grade_category, cg.name_grade_category FROM grade_category AS cg
-            WHERE u.id_grade_category = ?";
+            WHERE cg.id_grade_category = ?";
             $stmt = $this->connect->prepare($sql);
             $stmt->bindValue(1,$id, \PDO::PARAM_STR);
             $stmt->execute();

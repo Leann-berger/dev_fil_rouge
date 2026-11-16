@@ -43,11 +43,11 @@ class CategoryBrand
     {
         //creation de l'objet categoryBrand
         $newCategoryBrand = new CategoryBrand(
-            $categoryBrand["categoryBrand"]
+            $categoryBrand["category_brand"]
         );
 
         //set des attribut restant
-        $newCategoryBrand->setId($categoryBrand["id_categoryBrand"] ?? null);
+        $newCategoryBrand->setId($categoryBrand["id_brand_category"] ?? null);
         
         //retourne l'objet categoryBrand
         return $newCategoryBrand;

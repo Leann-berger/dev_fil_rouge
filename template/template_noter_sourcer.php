@@ -21,27 +21,56 @@
         <?php endif; ?>
 
         <form method="post">
-            <input type="text" id="name" name="name" list="brandNames" maxlength="50" required>
-            <datalist id="brandNames">
-                <?php foreach ($data["brandNames"] ?? [] as $n): ?>
-                    <option value="<?= htmlspecialchars($n) ?>">
-                <?php endforeach; ?>
-            </datalist>
+            <label for="name">Nom de la marque:</label>
+            <div>
+                <input type="text" id="name" name="name" placeholder="Ex: Décathlon" maxlength="50" required>
+            </div>
 
-            <select name="categorieMarque" id="categorieMarque" required>
-                <option value="">Choisissez une catégorie</option>
-                <?php foreach ($data["brandCategories"] ?? [] as $id => $label): ?>
-                    <option value="<?= $id ?>"><?= htmlspecialchars($label) ?></option>
-                <?php endforeach; ?>
-            </select>
+            <label for="categorieMarque">De quelle catégorie fait partie cette marque?</label>
+            <div>
+                <select name="categorieMarque" id="categorieMarque" required>
+                    <option value="">Choisissez une catégorie</option>
+                    <?php foreach ($data["brandCategories"] ?? [] as $category): ?>
+                        <option value="<?= $category->getId() ?>"><?= htmlspecialchars($category->getCategoryBrand()) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-            <select name="categories" id="categories">
-                <?php foreach ($data["gradeCategories"] ?? [] as $id => $label): ?>
-                    <option value="<?= $id ?>"><?= htmlspecialchars($label) ?></option>
-                <?php endforeach; ?>
-            </select>
+            <label for="descriptionMarque">Description de la marque: </label>
+            <div>
+                <textarea id="descriptionMarque" name="descriptionMarque" maxlength="120" minlength="20" placeholder="Écrivez une description simple de la marque." required></textarea>
+            </div>
 
-            <!-- ... note, source, descriptions inchangés ... -->
+            <label for="categories">Choisissez la catégorie que vous souhaitez noter:</label>
+            <div>
+                <select name="categories" id="categories">
+                    <?php foreach ($data["gradeCategories"] ?? [] as $category): ?>
+                        <option value="<?= $category->getId() ?>"><?= htmlspecialchars($category->getNameCategoryGrade()) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <label for="note">Quelle note voulez vous mettre à cette marque? <br> (par rapport a la catégorie selectionnée)</label>
+            <div>
+                <p id="displayNote">5/10</p>
+                <input type="range" id="note" name="note" min="0" max="10" value="5" required>
+            </div>
+
+            <label for="source">Ajouter une source pour appuyer votre avis:</label>
+            <div>
+                <input type="text" id="source" name="source" placeholder="Ex: https://masource/monarticle/" required>
+            </div>
+
+            <label for="descriptionSource">Description de la source:</label>
+            <div>
+                <textarea id="descriptionSource" name="descriptionSource" maxlength="200" minlength="40" placeholder="Écrivez une description simple de la source pour donner envie au autres utlisateurs." required></textarea>
+            </div>
+
+            <label for="marqueAlternative">Une marque alternative à proposer? (doit déjà être référencée)</label>
+            <div>
+                <input type="text" id="marqueAlternative" name="marqueAlternative" placeholder="Ex: Patagonia">
+            </div>
+
             <button type="submit" name="submit" id="valider">Valider</button>
         </form>
     </main>

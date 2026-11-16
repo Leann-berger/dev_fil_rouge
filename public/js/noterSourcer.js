@@ -21,3 +21,9 @@ addExist.addEventListener("change", () => {
     });
 });
 
+
+
+// Affichage en direct de la note
+note.addEventListener("input", () => {
+    displayNote.innerText = `${note.value}/10`;
+});

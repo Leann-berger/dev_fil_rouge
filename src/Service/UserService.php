@@ -39,6 +39,10 @@ class UserService
             return "Veuillez remplir tout les champs obligatoir du formulaire.";
         }
 
+        //conservation du mot de passe en brut
+        $password = $_POST["password"];
+        $confirmPassword = $_POST["confirm-password"];
+
         //Nettoyer les données
         Tools::sanitizeArray($_POST);
 
@@ -49,13 +53,13 @@ class UserService
             }
 
         //Tests si les 2 mot de sont différents
-        if ($_POST['password'] != $_POST['confirm-password'])
+        if ($password != $confirmPassword)
             {
                 return "Les mots de passe ne sont pas identique.";
             }
 
         //Test si le mot de passe est plus petit que 8 caractères
-        if(strlen($_POST['password'])<8)
+        if(strlen($password)<8)
             {
                 return 'Mot de passe trop court. Il doit contenir au minimum 8 charactère.';
             }
@@ -76,7 +80,7 @@ class UserService
             }
 
         //Hasher le mot de passe
-        $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $_POST["psw"] = password_hash($password, PASSWORD_DEFAULT);
 
         //récupération du rôle
         $role = $this->roleRepository->findByName('utilisateur');
@@ -99,11 +103,8 @@ class UserService
         $role,
         $reputation);
 
-        //Setter le mot de passe hashé
-        $newUser->setPsw($hash);
-
         //importer l'image
-        $newUser->setImgProfil($this->upload->uploadFile($_FILES["img_profil"], 'assets/img/profil/'));
+        $newUser->setImgProfil($this->upload->uploadFile($_FILES["img_profil"], __DIR__ . '/../../public/assets/img/profil/'));
 
         //Ajouter en BDD le compte
         $this->userRepository->create($newUser);

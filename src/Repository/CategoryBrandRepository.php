@@ -34,4 +34,22 @@ class CategoryBrandRepository
         }
         return $categoryBrand ?? null;
     }
+
+    // BrandCategoryRepository : nouvelle méthode
+    public function findById(int $id): ?CategoryBrand
+    {
+        try {
+            $sql = "SELECT id_brand_category, category_brand FROM brand_category WHERE id_brand_category = ?";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->bindValue(1, $id, \PDO::PARAM_INT);
+            $stmt->execute();
+            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+            if ($data) {
+                $categoryBrand = CategoryBrand::hydrate($data);
+            }
+        } catch (\PDOException $e) {
+            error_log("Erreur : " . $e->getMessage());
+        }
+        return $categoryBrand ?? null;
+    }
 }

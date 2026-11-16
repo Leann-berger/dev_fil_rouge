@@ -21,24 +21,21 @@ class UserRepository
 
     public function create(User $user): void
     {
-        try{
-            $sql = "INSERT INTO `user`(pseudo_user, first_name_user, name_user, email_user, date_birth_user, psw_user, profile_picture_user, id_role, id_reputation) VALUE(?,?,?,?,?,?,?,?,?)";
-            $stmt = $this->connect->prepare($sql);
-            $stmt->bindValue(1,$user->getPseudo(),\PDO::PARAM_STR);
-            $stmt->bindValue(2, $user->getFirstname(), \PDO::PARAM_STR);
-            $stmt->bindValue(3, $user->getLastname(), \PDO::PARAM_STR);
-            $stmt->bindValue(4, $user->getEmail(), \PDO::PARAM_STR);
-            $stmt->bindValue(5, $user->getAge()->format("Y-m-d"), \PDO::PARAM_STR);
-            $stmt->bindValue(6, $user->getPsw(), \PDO::PARAM_STR);
-            $stmt->bindValue(7, $user->getImgProfil(), \PDO::PARAM_STR);
-            $stmt->bindValue(8, $user->getRole()->getId(), \PDO::PARAM_STR);
-            $stmt->bindValue(9, $user->getReputation()->getId(), \PDO::PARAM_STR);
-            $stmt->execute();
-            $id = $this->connect->lastInsertId();
-            $user->setId($id);
-        } catch(PDOException $e){
-            error_log("Erreur : " . $e->getMessage());
-        }
+        
+        $sql = "INSERT INTO `user`(pseudo_user, first_name_user, name_user, email_user, date_birth_user, psw_user, profile_picture_user, id_role, id_reputation) VALUE(?,?,?,?,?,?,?,?,?)";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindValue(1,$user->getPseudo(),\PDO::PARAM_STR);
+        $stmt->bindValue(2, $user->getFirstname(), \PDO::PARAM_STR);
+        $stmt->bindValue(3, $user->getLastname(), \PDO::PARAM_STR);
+        $stmt->bindValue(4, $user->getEmail(), \PDO::PARAM_STR);
+        $stmt->bindValue(5, $user->getAge()->format("Y-m-d"), \PDO::PARAM_STR);
+        $stmt->bindValue(6, $user->getPsw(), \PDO::PARAM_STR);
+        $stmt->bindValue(7, $user->getImgProfil(), \PDO::PARAM_STR);
+        $stmt->bindValue(8, $user->getRole()->getId(), \PDO::PARAM_STR);
+        $stmt->bindValue(9, $user->getReputation()->getId(), \PDO::PARAM_STR);
+        $stmt->execute();
+        $id = $this->connect->lastInsertId();
+        $user->setId($id);
     }
 
 

@@ -9,8 +9,6 @@ use App\Repository\UserRepository;
 use App\Repository\SourceRepository;
 use App\Repository\GradeRepository;
 use App\Entity\Brand;
-use App\Entity\CategoryBrand;
-use App\Entity\CategoryGrade;
 use App\Entity\Source;
 use App\Entity\Grade;
 
@@ -34,54 +32,49 @@ class NoterSourcerService
         $this->userRepository = new UserRepository();
     }
 
-    /** Données pour remplir les listes du formulaire */
+    //Données pour remplir les listes du formulaire 
     public function getFormData(): array
     {
         return [
             "brandCategories" => $this->brandCategoryRepository->findAll(),
             "gradeCategories" => $this->gradeCategoryRepository->findAll(),
-            "brandNames"      => $this->brandRepository->findAllNames(),
         ];
     }
 
 
     public function submit(array $post, int $userId): array
     {
-        // ÉTAPE 1 : récupération des valeurs du formulaire
-        // trim() enlève les espaces au début et à la fin du texte
-        // "?? ''" donne une valeur vide si le champ n'existe pas dans le formulaire
+        // récupération des valeurs du formulaire
 
-        $brandName = trim($post["name"] ?? "");
-        $altName = trim($post["marqueAlternative"] ?? "");
-        $description = trim($post["descriptionSource"] ?? "");
-        $url = trim($post["source"] ?? "");
-        $gradeCategoryId = (int) ($post["categories"] ?? 0);
+        $brandName         = trim($post["name"] ?? "");
+        $brandDescription  = trim($post["descriptionMarque"] ?? "");
+        $brandCategoryId   = (int) ($post["categorieMarque"] ?? 0);
+        $sourceDescription = trim($post["descriptionSource"] ?? "");
+        $url               = trim($post["source"] ?? "");
+        $gradeCategoryId   = (int) ($post["categories"] ?? 0);
+        $altName           = trim($post["marqueAlternative"] ?? "");
 
-        // verifie si c'est un entier compris entre 0 et 10
-        if ($post["note"] < 0 || $post["note"]>10 || is_double($post["note"])){
-            $note = false;
-        } else {
-            $note = $post["note"];
-        }
-        
+        // false si la note n'est pas un entier compris entre 0 et 10
+        $note = filter_var($post["note"] ?? null, FILTER_VALIDATE_INT, ["options" => ["min_range" => 0, "max_range" => 10]]);
 
 
-        // check si les champs sont remplit
-        if (empty($brandName) || empty($description) || empty($url) || $note === false) {
+        //vérification des champs
+        if (empty($brandName) || empty($brandDescription) || empty($sourceDescription) || empty($url) || $note === false) {
             return ["success" => false, "msg" => "Veuillez remplir tous les champs obligatoires."];
         }
 
-        
-        //check le nombre de charactère
         if (mb_strlen($brandName) > 50) {
             return ["success" => false, "msg" => "Nom de marque trop long (50 caractères max)."];
         }
 
-        if (mb_strlen($description) < 40 || mb_strlen($description) > 200) {
+        if (mb_strlen($brandDescription) < 20 || mb_strlen($brandDescription) > 120) {
+            return ["success" => false, "msg" => "La description de la marque doit faire entre 20 et 120 caractères."];
+        }
+
+        if (mb_strlen($sourceDescription) < 40 || mb_strlen($sourceDescription) > 200) {
             return ["success" => false, "msg" => "La description de la source doit faire entre 40 et 200 caractères."];
         }
 
-        // test l'url
         $scheme = parse_url($url, PHP_URL_SCHEME);
         if (!filter_var($url, FILTER_VALIDATE_URL)
             || ($scheme !== "http" && $scheme !== "https")
@@ -90,52 +83,46 @@ class NoterSourcerService
         }
 
 
+        //vérifications avec la BDD
 
-        // check si l'url d'une source est unique
-        if ($this->sourceRepository->FindByUrl($url) === null) {
+        // check si la source existe deja
+        if ($this->sourceRepository->findByUrl($url) !== null) {
             return ["success" => false, "msg" => "Cette source a déjà été renseignée."];
         }
 
-
-        
-        // check si la marque existe déjà 
-        $brand = $this->brandRepository->findByName($brandName);
-
-        $description = "";
-        $brandCategoryId = 0;
-
-        
-    
-        // Ajoute une nouvelle marque
-        if ($brand !== null) {
-            return ["success" => false, "msg" => "Cette marque existe déjà : choisissez « Noter une marque existante »."];
+        // check si la marque existe deja
+        if ($this->brandRepository->findByName($brandName) !== null) {
+            return ["success" => false, "msg" => "Cette marque a déjà été renseignée."];
         }
 
-        //  vérifie sa description et sa catégorie
-        $description = trim($post["descriptionMarque"] ?? "");
-        $brandCategoryId = (int) ($post["categorieMarque"] ?? 0);
-
-        if (mb_strlen($description) < 20 || mb_strlen($description) > 120) {
-            return ["success" => false, "msg" => "La description de la marque doit faire entre 20 et 120 caractères."];
-        }
-
-        $brandCategories = $this->brandCategoryRepository->findAll();
-        if (!array_key_exists($brandCategoryId, $brandCategories)) {
+        // check les catégories
+        $brandCategory = $this->brandCategoryRepository->findById($brandCategoryId);
+        if ($brandCategory === null) {
             return ["success" => false, "msg" => "Catégorie de marque invalide."];
         }
-        
+
+        $gradeCategory = $this->gradeCategoryRepository->findById($gradeCategoryId);
+        if ($gradeCategory === null) {
+            return ["success" => false, "msg" => "Catégorie de note invalide."];
+        }
+
+        // check l'utilisateur connecté
+        $user = $this->userRepository->findById($userId);
+        if ($user === null) {
+            return ["success" => false, "msg" => "Utilisateur introuvable, reconnectez-vous."];
+        }
 
 
-        // ÉTAPE 5 : vérification de la marque alternative (facultative)
-        // Si elle est invalide, on ne bloque pas tout : on l'ignore et on prévient l'utilisateur.
+        // vérification de la marque alternative
 
-        $alternativeId = null;  
+        // check la marque alternative.
+        $alternativeId = null;
         $messageAlternative = "";
 
         if ($altName !== "") {
             $alternativeBrand = $this->brandRepository->findByName($altName);
 
-            // L'alternative doit exister et etre differente de la marque que l'on note
+            // L'alternative doit exister et être différente de la marque que l'on ajoute
             $isSameBrand = mb_strtolower($altName) === mb_strtolower($brandName);
 
             if ($alternativeBrand === null || $isSameBrand) {
@@ -146,55 +133,40 @@ class NoterSourcerService
         }
 
 
-        
-        //Lance une seule connexion en bdd pour ajouter tout d'un coup
+        //enregistrement en BDD
         $pdo = Mysql::connectBdd();
         $pdo->beginTransaction();
 
         try {
-            //créer l'objet brand
-            $user = $this->userRepository->findById($userId);
-            $catBrand = CategoryBrand::hydrate(["categoryBrand" => $brandCategories]);
-            $brand = Brand::hydrate(["name_brand" => $brandName, "description_brand" => $description], $catBrand, $user);
-            
-            //ajoute en bdd
+            // la marque
+            $brand = Brand::hydrate(["name_brand" => $brandName, "description_brand" => $brandDescription], $brandCategory, $user);
             $this->brandRepository->create($brand);
-            
-            //crée la source
-            $source = Source::hydrate(["descritpion" => $description, "url" => $url]);
 
-            //l'ajoute en bdd
+            // la source
+            $source = Source::hydrate(["description" => $sourceDescription, "url" => $url]);
             $this->sourceRepository->create($source);
 
-            // créer la note
-            $gradeCategory = $this->gradeCategoryRepository->findById($gradeCategoryId);
+            // la note
             $grade = Grade::hydrate(["valueGrade" => $note], $user, $gradeCategory, $brand, $source);
-
-            //l'ajoute en bdd
             $this->gradeRepository->create($grade);
 
-            //  créer le lien entre les deux marques
+            // le lien avec la marque alternative
             if ($alternativeId !== null) {
                 $this->brandRepository->addAlternative($brand->getId(), $alternativeId);
             }
 
-            // on valide
             $pdo->commit();
 
         } catch (\Throwable $e) {
-            //on annule tout ce qui a été écrit dans ce bloc
+            // on annule tout ce qui a été écrit dans ce bloc si il y a la moindre error
             if ($pdo->inTransaction()) {
                 $pdo->rollBack();
             }
 
-            // L'erreur détaillée va dans les logs, l'utilisateur voit un message simple
             error_log("Erreur noter/sourcer : " . $e->getMessage());
             return ["success" => false, "msg" => "Une erreur est survenue, rien n'a été enregistré."];
         }
 
-
-        // renvoie le succès au controller
-
-        return ["success" => true, "msg" => "Merci, votre avis sur " . $brandName . " a bien été enregistré" . $messageAlternative . "."];
+        return ["success" => true, "msg" => "Merci, la marque " . $brandName . " a bien été ajoutée" . $messageAlternative . "."];
     }
 }

@@ -7,6 +7,7 @@ class Brand
     private ?int $id =null;
     private string $descriptionBrand;
     private string $nameBrand;
+    private ?User $user = null;
     private CategoryBrand $categoryBrand;
 
     //construct
@@ -53,6 +54,16 @@ class Brand
         $this->id = $id;
     }
 
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): void
+    {
+        $this->user = $user;
+    }
+
       public function getCategoryBrand(): CategoryBrand
     {
         return $this->categoryBrand;
@@ -77,6 +88,7 @@ class Brand
 
         //set des attribut restant
         $newBrand->setId($brand["id_brand"] ?? null);
+        $newBrand->setUser($user) ?? null;
 
         //retourne l'objet brand
         return $newBrand;
