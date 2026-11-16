@@ -15,7 +15,7 @@ class SourceRepository
         $this->connect = Mysql::connectBdd();
     }
 
-    public function findByUrl(String $url): Source
+    public function findByUrl(String $url): ?Source
     {
         try{
             $sql = "SELECT s.id_souce, s.description_source, s.url_source, s.nbr_like_source, s.date_source FROM `source` AS s

@@ -18,7 +18,7 @@ class BrandRepository
     }
 
 
-    public function create(Brand $brand): Brand
+    public function create(Brand $brand): void
     {
         try{
             $sql = "INSERT INTO brand (description_brand, name_brand, alternative_brand, id_user, id_brand_category) VALUE (?,?,?)";
@@ -31,9 +31,10 @@ class BrandRepository
             $brand->setId($id);
         } catch(\PDOException $e){
             error_log("Erreur : " . $e->getMessage());
-        }
-        return $brand;  
+        } 
     }
+
+    
     public function findByName(string $name): ?Brand
     {
         try{
@@ -68,6 +69,22 @@ class BrandRepository
         }
         
     }
+
+
+
+
+    public function findAllNames(): array
+    {
+        $sql = "SELECT name_brand FROM brand ORDER BY name_brand";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $data ?? [];
+    }
+
+
+
+
 
 
     public function findAll(): array

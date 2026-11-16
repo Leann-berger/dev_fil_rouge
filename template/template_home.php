@@ -111,78 +111,51 @@
                 
                 
             </section>
+            <?php if (!empty($data["flash"])): ?>
+                <p role="status"><?= htmlspecialchars($data["flash"]) ?></p>
+            <?php endif; ?>
+
+            <?php foreach ($data["brands"] ?? [] as $brand): ?>
             <section>
                 <div class="nomEtNote">
-                    <p class="noteGenerale">26/30</p> 
-                    <button aria-label="Information sur la marque Gilbert" class="nomMarque">GILBERT</button>
+                    <p class="noteGenerale"><?= $brand["total"] ?? "X" ?>/30</p>
+                    <button class="nomMarque"
+                            aria-label="Information sur la marque <?= htmlspecialchars($brand["name"]) ?>">
+                        <?= htmlspecialchars(mb_strtoupper($brand["name"])) ?>
+                    </button>
                 </div>
-                
-                <p class="description">Chaîne de magasin spécialiste de l'occasion livres, musique et vidéo</p> 
-                <div class="categories">
-                    <h2>LIBRAIRIE, DISQUAIRE</h2>
+                <p class="description"><?= htmlspecialchars($brand["description"]) ?></p>
+                <div class="categories"><h2><?= htmlspecialchars(mb_strtoupper($brand["category"])) ?></h2></div>
+
+                <div class="catDeroulant">
+                    <?php foreach ($brand["grades"] as $idCat => $grade): ?>
+                    <section class="infoPour1Cat">
+                        <div class="categorieMarque">
+                            <p><?= $grade["avg"] !== null ? $grade["avg"] : "X" ?>/10</p>
+                            <h2><?= htmlspecialchars(mb_strtoupper($grade["label"])) ?></h2>
+                            <a href="#"><button>Plus de <?= $grade["nb"] ?> source<?= $grade["nb"] > 1 ? "s" : "" ?></button></a>
+                        </div>
+                        <div>
+                            <a href="/noterSourcer"><button class="noterSourcerCat">Noter <br> et <br> Sourcer</button></a>
+                        </div>
+                    </section>
+                    <?php endforeach; ?>
+
+                    <section class="alternative">
+                        <p>Alternative</p>
+                        <div class="toutesLesAlternatives">
+                            <?php foreach (array_slice($brand["alternatives"], 0, 2) as $alt): ?>
+                            <div class="marqueAlternative">
+                                <p><?= $alt["total"] ?? "X" ?>/30</p>
+                                <h3><?= htmlspecialchars(mb_strtoupper($alt["name"])) ?></h3>
+                            </div>
+                            <?php endforeach; ?>
+                            <a href="/noterSourcer"><button>Proposer une alternative</button></a>
+                        </div>
+                    </section>
                 </div>
-                
             </section>
-            <section>
-                <div class="nomEtNote">
-                    <p class="noteGenerale">10/30</p> 
-                    <button aria-label="Information sur la marque Carrefour" class="nomMarque">CARREFOUR</button>
-                </div>
-                
-                <p class="description">Chaîne de magasins de grande distribution</p> 
-                <div class="categories">
-                    <h2>ALIMENTAIRE</h2>
-                </div>
-                
-            </section>
-            <section>
-                <div class="nomEtNote">
-                    <p class="noteGenerale">X/30</p> 
-                    <button aria-label="Information sur la marque Lorem" class="nomMarque">LOREM</button>
-                </div>
-                
-                <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. </p> 
-                <div class="categories">
-                    <h2>CATEGORIE</h2>
-                </div>
-                
-            </section>
-            <section>
-                <div class="nomEtNote">
-                    <p class="noteGenerale">X/30</p> 
-                    <button aria-label="Information sur la marque Lorem" class="nomMarque">LOREM</button>
-                </div>
-                
-                <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, magnam.</p> 
-                <div class="categories">
-                    <h2>CATEGORIE</h2>
-                </div>
-                
-            </section>
-            <section>
-                <div class="nomEtNote">
-                    <p class="noteGenerale">X/30</p> 
-                    <button aria-label="Information sur la marque Lorem" class="nomMarque">LOREM</button>
-                </div>
-                
-                <p class="description">Lorem ipsum dolor sit amet.</p> 
-                <div class="categories">
-                    <h2>CATEGORIE</h2>
-                </div>
-                
-            </section>
-            <section>
-                <div class="nomEtNote">
-                    <p class="noteGenerale">X/30</p> 
-                    <button aria-label="Information sur la marque Lorem" class="nomMarque">LOREM</button>
-                </div>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur assumenda autem sed?</p> 
-                <div class="categories">
-                    <h2>CATEGORIE</h2>
-                </div>
-                
-                
-            </section>
+            <?php endforeach; ?>
             
             
         </main>
@@ -217,7 +190,6 @@
         </section>
         
     </footer>
-    <script type="module" src="./js/ajoutNouvelleMarque.js"></script>
-    <script type="module" src="./js/informationSupMarque.js"></script>
+    <script type="module" src="/js/informationSupMarque.js"></script>
 </body>
 </html>

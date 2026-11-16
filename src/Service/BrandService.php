@@ -82,52 +82,33 @@ class BrandService
 
         }
 
-        foreach($brandsStock as $brand){
-            $count = 0;
+        foreach ($brandsStock as $id => $brand) {
+            $sum = 0;
             $nb = 0;
-            foreach($brand["grades"] as $grades){
-                if ($grades["avg"] != null){
-                    $count += $grades["avg"];
-                    $nb ++;
-                }               
-            } 
-            
-        }
+            foreach ($brand["grades"] as $grade) {
+                if ($grade["avg"] !== null) {
+                    $sum += $grade["avg"];
+                    $nb++;
+                }
+            }
 
-    }
-
-
-    public function getBrandsForHome(): array
-    {
-        $brands = [];
-        foreach ($this->brandRepository->findAllWithScores() as $r) {
-            $id = (int) $r["id_brand"];
-            $brands[$id] ??= [
-                "id" => $id, "name" => $r["name_brand"], "description" => $r["description_brand"],
-                "category" => $r["category_brand"], "grades" => [], "total" => null, "alternatives" => [],
-            ];
-            $brands[$id]["grades"][(int) $r["id_grade_category"]] = [
-                "label" => $r["name_grade_category"],
-                "avg"   => $r["avg_grade"] !== null ? (float) $r["avg_grade"] : null,
-                "nb"    => (int) $r["nb_grades"],
-            ];
-        }
-
-        // Note globale /30 : même logique que ton JS (3 × la note), généralisée à la moyenne des catégories notées
-        foreach ($brands as &$b) {
-            $known = array_filter(array_column($b["grades"], "avg"), fn($v) => $v !== null);
-            $b["total"] = $known ? (int) round(3 * array_sum($known) / count($known)) : null;
-        }
-        unset($b);
-
-        foreach ($this->brandRepository->findAllAlternatives() as $row) {
-            $alt = $brands[(int) $row["id_alternative"]] ?? null;
-            if ($alt) {
-                $brands[(int) $row["id_brand"]]["alternatives"][] = ["name" => $alt["name"], "total" => $alt["total"]];
+            if ($nb > 0) {
+                $brandsStock[$id]["total"] = round(3 * $sum / $nb);
             }
         }
-        return array_values($brands);
+
+        // ajout des marques alternatives
+        foreach ($this->brandRepository->findAllAlternatives() as $brand) {
+            $alt = $brandsStock[$brand["id_alternative"]] ?? null;
+            if ($alt !== null) {
+                $brandsStock[$brand["id_brand"]]["alternatives"][] = [
+                    "name"  => $alt["name"],
+                    "total" => $alt["total"],
+                ];
+            }
+        }
+
+        return $brandsStock;
+
     }
-
 }
-

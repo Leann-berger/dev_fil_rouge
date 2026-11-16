@@ -80,7 +80,6 @@ class Source
     {
         //creation de l'objet source
         $newSource = new source(
-            $source["recap"],
             $source["description"],
             $source["url"],
         );

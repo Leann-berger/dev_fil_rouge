@@ -6,7 +6,6 @@ $dotenv->load();
 
 session_start();
 
-
 //récupération de l'URL (composante)
 $url = parse_url($_SERVER["REQUEST_URI"]);
 

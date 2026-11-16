@@ -34,4 +34,25 @@ class GradeCategoryRepository
         
         return $category ?? [];
     }
+
+
+    public function findById(int $id): ?CategoryGrade
+    {   
+        try{
+            $sql = "SELECT cg.id_grade_category, cg.name_grade_category FROM grade_category AS cg
+            WHERE u.id_grade_category = ?";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->bindValue(1,$id, \PDO::PARAM_STR);
+            $stmt->execute();
+            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            if($data){
+                $categoryGrade = CategoryGrade::hydrate($data);
+            }
+        } catch(\PDOException $e){
+            error_log("Erreur : " . $e->getMessage());
+        }
+        return $categoryGrade ?? null;
+    }
+
 }

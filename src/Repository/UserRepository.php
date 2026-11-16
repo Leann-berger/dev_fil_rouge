@@ -88,4 +88,29 @@ class UserRepository
         }
         return $user ?? null;
     }
+
+
+    public function findById(int $id): ?User
+    {   
+        try{
+            $sql = "SELECT u.id_user, u.pseudo_user AS pseudo, u.first_name_user AS firstname, u.name_user AS lastname, u.email_user AS email, u.date_birth_user AS age,
+            u.psw_user AS psw, u.profile_picture_user AS img_profil, re.id_reputation, re.reputation, ro.id_role, ro.`role` FROM `user` AS u
+            INNER JOIN reputation AS re ON re.id_reputation = u.id_reputation
+            INNER JOIN `role` AS ro ON ro.id_role = u.id_role
+            WHERE u.id_user = ?";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->bindValue(1,$id, \PDO::PARAM_STR);
+            $stmt->execute();
+            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            if($data){
+                $role = Role::hydrate($data);
+                $reputation = Reputation::hydrate($data);
+                $user = User::hydrate($data, $role, $reputation);
+            }
+        } catch(\PDOException $e){
+            error_log("Erreur : " . $e->getMessage());
+        }
+        return $user ?? null;
+    }
 }
