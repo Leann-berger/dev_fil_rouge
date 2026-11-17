@@ -46,13 +46,13 @@ class NoterSourcerService
     {
         // récupération des valeurs du formulaire
 
-        $brandName         = trim($post["name"] ?? "");
-        $brandDescription  = trim($post["descriptionMarque"] ?? "");
-        $brandCategoryId   = (int) ($post["categorieMarque"] ?? 0);
+        $brandName = trim($post["name"] ?? "");
+        $brandDescription = trim($post["descriptionMarque"] ?? "");
+        $brandCategoryId = (int) ($post["categorieMarque"] ?? 0);
         $sourceDescription = trim($post["descriptionSource"] ?? "");
-        $url               = trim($post["source"] ?? "");
-        $gradeCategoryId   = (int) ($post["categories"] ?? 0);
-        $altName           = trim($post["marqueAlternative"] ?? "");
+        $url = trim($post["source"] ?? "");
+        $gradeCategoryId = (int) ($post["categories"] ?? 0);
+        $altName = trim($post["marqueAlternative"] ?? "");
 
         // false si la note n'est pas un entier compris entre 0 et 10
         $note = filter_var($post["note"] ?? null, FILTER_VALIDATE_INT, ["options" => ["min_range" => 0, "max_range" => 10]]);

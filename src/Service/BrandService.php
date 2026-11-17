@@ -40,7 +40,7 @@ class BrandService
                 $brandsStock[$brand["id_brand"]] = [
                     "id" => $brand["id_brand"], "name" => $brand["name_brand"], "description" => $brand["description_brand"],
                     "category" => $brand["category_brand"],
-                    "grades" => $emptyGrades,      // <- au lieu de []
+                    "grades" => $emptyGrades,      
                     "total" => null, "alternatives" => [],
                 ];
             }
