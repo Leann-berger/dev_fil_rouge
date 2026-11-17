@@ -38,11 +38,11 @@ class BrandCategoryRepository
     public function findById(int $id): ?CategoryBrand
     {
         try{
-            $sql = "SELECT id_brand_category, category_brand FROM brand_category ORDER BY id_brand_category
+            $sql = "SELECT bc.id_brand_category, bc.category_brand FROM brand_category AS bc 
             WHERE id_brand_category = ?";
             $stmt = $this->connect->prepare($sql);
-            $stmt->execute();
             $stmt->bindValue(1, $id, \PDO::PARAM_INT);
+            $stmt->execute();
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
             if($data){
                 $brandCategory = CategoryBrand::hydrate($data);
